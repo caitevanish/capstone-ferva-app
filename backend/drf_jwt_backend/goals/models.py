@@ -1,0 +1,28 @@
+from django.db import models
+from courses.models import Course
+from projects.models import Project
+
+
+# Create your models here.
+class Goal(models.Model):
+
+  goal_type_choices = [
+    ('ST', 'Short Term'),
+    ('LT', 'Long Term'),
+  ]
+
+
+  title = models.CharField(max_length=30)
+  description = models.TextField(max_length=1000)
+  goal_type = models.CharField(max_length=50, choices = goal_type_choices, default = 'ST')  #choices option here
+  has_project_list = models.BooleanField(default=False)
+  project_id = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+  has_course_list = models.BooleanField(default=False)
+  course_id = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
+  has_deadline = models.BooleanField(default=False)
+  deadline_date = models.DateField(null=True, blank=True)
+  notes = models.TextField(max_length=1000)
+  # images = models.CharField(max_length=1000)
+
+  def __str__(self):
+    return self.title

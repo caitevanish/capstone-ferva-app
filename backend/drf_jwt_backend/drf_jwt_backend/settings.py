@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
+    'courses.apps.CoursesConfig',
+    'projects.apps.ProjectsConfig',
+    'goals.apps.GoalsConfig',
     'cars.apps.CarsConfig'  # This app is for example use only
 ]
 
