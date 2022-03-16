@@ -16,9 +16,9 @@ class Goal(models.Model):
   description = models.TextField(max_length=1000)
   goal_type = models.CharField(max_length=50, choices = goal_type_choices, default = 'ST')  #choices option here
   has_project_list = models.BooleanField(default=False)
-  project_id = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+  project = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
   has_course_list = models.BooleanField(default=False)
-  course_id = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
+  course = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE) # This will be a list
   has_deadline = models.BooleanField(default=False)
   deadline_date = models.DateField(null=True, blank=True)
   notes = models.TextField(max_length=1000)

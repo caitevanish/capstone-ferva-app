@@ -17,7 +17,7 @@ class Project(models.Model):
   # goal_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE)
   has_milestones = models.BooleanField(default=False)
   # milestone_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE)
-  course_id = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
+  course = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
   notes = models.TextField(max_length=1000)
   # images = models.CharField(max_length=1000)
 
