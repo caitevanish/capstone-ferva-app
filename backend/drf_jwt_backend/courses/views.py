@@ -41,7 +41,7 @@ def view_top_courses(request):
 
 
 #<<<<<<<<< POST / Create >>>>>>>>>>
-#         Create new course ( Course form module)
+#--Done--  Create new course ( Course form module)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated]) 
