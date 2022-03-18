@@ -12,7 +12,7 @@ const CoursesMainPage = () => {
     const fetchCourses = async () => {
       try {
         let response = await axios.get(
-          'http://127.0.0.1:3000/api/courses/all/',
+          'http://127.0.0.1:8000/api/courses/all/',
           {
             headers: {
               Authorization: 'Bearer ' + token,
