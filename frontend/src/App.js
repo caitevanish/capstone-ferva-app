@@ -8,13 +8,16 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 // Component Imports
-import Navbar from "./components/NavBar/NavBar";
+import Navbar from "./components/TopNavbar/TopNavbar";
 import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+
+
+
   return (
     <div>
       <Navbar />
@@ -22,8 +25,8 @@ function App() {
         <Route
           path="/"
           element={
-            <PrivateRoute>
-              <HomePage />
+            <PrivateRoute> 
+              <HomePage /> 
             </PrivateRoute>
           }
         />
