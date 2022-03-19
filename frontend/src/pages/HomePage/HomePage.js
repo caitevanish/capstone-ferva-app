@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Pages Imports
-import CoursesMainPage from '../../pages/CoursesPage/CoursesMainPage';
 
 // Component Imports
-import SideNavbar from '../../components/SideNavbar/SideNavbar';
 
 // Util Imports
 import PrivateRoute from '../../utils/PrivateRoute';
@@ -47,7 +45,7 @@ const HomePage = () => {
   return (
     <div>
       {/* Navbar  */}
-    
+
       <div className='container'>
         <h1>Home Page for {user.username}!</h1>
         {/* {courses &&

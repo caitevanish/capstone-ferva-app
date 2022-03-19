@@ -27,7 +27,7 @@ const CoursesMainPage = () => {
     fetchCourses();
   }, [token]);
   return (
-    <div className=''>
+    <div className='container'>
       <h1>Courses Main Page for {user.username}</h1>
       <h2>THIS WILL BECOME A TABLE:</h2>
       {courses &&
