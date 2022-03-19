@@ -7,12 +7,12 @@ import './TopNavbar.css';
 const TopNavbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
   return (
     <div className='topNavbar'>
       <ul>
         <li className='brand'>
-          <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+          <Link to='/' style={{ textDecoration: 'none', color: '#FFD6A7' }}>
             <b>FERVA</b>
           </Link>
         </li>

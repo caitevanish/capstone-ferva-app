@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 *,
 *::before,
@@ -10,7 +10,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 p {
@@ -18,9 +18,9 @@ p {
 }
 
 button {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: 2px solid steelblue;
-  color: steelblue;
+  color: #9b8a90;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;

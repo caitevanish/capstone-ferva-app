@@ -9,27 +9,28 @@ li {
 }
 
 .topNavbar {
-  background: steelblue;
+  background: #59424c;
   box-shadow: 4px 2px 5px gray;
-  color: white;
+  color: #ffd6a7;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
 }
 
 .topNavbar button {
-  background: transparent;
+  /* background: transparent; */
   border: 2px solid white;
-  color: white;
+  color: #ffd6a7;
   padding: 0.4rem 0.5rem;
 }
 
 .topNavbar button:hover {
-  background: white;
-  color: steelblue;
+  background: #6aa9bc;
+  /* color: steelblue; */
   cursor: pointer;
 }
 
 .brand {
+  color: #ffd6a7;
   cursor: pointer;
   font-size: 2rem;
 }
