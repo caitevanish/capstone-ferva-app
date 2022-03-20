@@ -1,5 +1,8 @@
 // General Imports
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import useAuth from './hooks/useAuth';
 import './App.css';
 
 // Pages Imports
@@ -19,6 +22,30 @@ import SideNavbar from './components/SideNavbar/SideNavbar';
 import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
+  const [user, token] = useAuth();
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        let response = await axios.get(
+          'http://127.0.0.1:8000/api/courses/all/',
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            },
+          }
+        );
+        setCourses(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchCourses();
+  }, [token]);
+
+  
+
   return (
     <div>
       <TopNavbar />
@@ -30,7 +57,12 @@ function App() {
           path='/'
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage
+                user={user}
+                token={token}
+                courses={courses}
+                setCourses={setCourses}
+              />
             </PrivateRoute>
           }
         />
@@ -38,7 +70,7 @@ function App() {
           path='/courses/all/'
           element={
             <PrivateRoute>
-              <CoursesMainPage />
+              <CoursesMainPage courses={courses} setCourses={setCourses} />
             </PrivateRoute>
           }
         />

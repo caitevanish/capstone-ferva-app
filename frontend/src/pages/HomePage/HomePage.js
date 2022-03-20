@@ -11,52 +11,26 @@ import PrivateRoute from '../../utils/PrivateRoute';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 
-const HomePage = () => {
+const HomePage = ({ user, token, courses, setCourses }) => {
+ // const [user, token] = useAuth(); 
+  
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
-  const [user, token] = useAuth();
-  const [courses, setCourses] = useState([]);
 
-  useEffect(() => {
-    //change the variable names from fetchCars to something else
+  
 
-    const fetchCourses = async () => {
-      // async function fetchCourses(){
-      try {
-        //Check the URLs: Is it port 3000 or 8000??
-
-        let response = await axios.get(
-          'http://127.0.0.1:8000/api/courses/all/',
-          {
-            headers: {
-              Authorization: 'Bearer ' + token,
-            },
-          }
-        );
-        console.log(user);
-        setCourses(response.data);
-      } catch (error) {
-        console.log(courses);
-      }
-    };
-    fetchCourses();
-  }, [token]);
 
   return (
     <div>
-      {/* Navbar  */}
-
       <div className='container'>
         <h1>Home Page for {user.username}!</h1>
-        {/* {courses &&
-          courses.map((course) => (
-            <p key={course.id}>
-              Title:{course.title} Company:{course.company} price:{course.price}
-            </p>
-          ))} */}
+        {/* Top 3 Courses Table */}
+        {/* Top 3 Projects Table */}
       </div>
     </div>
   );
 };
 
 export default HomePage;
+
+//Past Code saved @ _scratch-temp > scratch-HomePage.js
