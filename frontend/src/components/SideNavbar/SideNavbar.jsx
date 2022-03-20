@@ -23,7 +23,7 @@ const SideNavbar = () => {
               </li>
               <li>
                 <Link
-                  to='/courses/all/'
+                  to='/courses/'
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <b>Courses</b>

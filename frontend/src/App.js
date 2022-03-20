@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import CoursesMainPage from './pages/CoursesPage/CoursesMainPage';
+import CourseDetailPage from './pages/CoursesPage/CourseDetailPage';
 import ProjectsMainPage from './pages/ProjectsPage/ProjectMainPage';
 import GoalsMainPage from './pages/GoalsPage/GoalsMainPage';
 
@@ -28,14 +29,11 @@ function App() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        let response = await axios.get(
-          'http://127.0.0.1:8000/api/courses/all/',
-          {
-            headers: {
-              Authorization: 'Bearer ' + token,
-            },
-          }
-        );
+        let response = await axios.get('http://127.0.0.1:8000/api/courses/', {
+          headers: {
+            Authorization: 'Bearer ' + token,
+          },
+        });
         setCourses(response.data);
       } catch (error) {
         console.log(error.message);
@@ -43,8 +41,6 @@ function App() {
     };
     fetchCourses();
   }, [token]);
-
-  
 
   return (
     <div>
@@ -67,10 +63,18 @@ function App() {
           }
         />
         <Route
-          path='/courses/all/'
+          path='/courses/'
           element={
             <PrivateRoute>
               <CoursesMainPage courses={courses} setCourses={setCourses} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/course/:id'
+          element={
+            <PrivateRoute>
+              <CourseDetailPage courses={courses} />
             </PrivateRoute>
           }
         />

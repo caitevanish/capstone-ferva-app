@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
-const CoursesTable = ({ courses, setCourses }) => {
+const CoursesTable = ({ courses, setCourses, setCourseDetails }) => {
   // const [user, token] = useAuth();
   // const [courseTable, setCoursesTable] = useState([]);
-
 
   //-----------To-Do:
   //handleClick function: This button is supposed to lead to the course details page
@@ -11,7 +11,6 @@ const CoursesTable = ({ courses, setCourses }) => {
   // function handleClick(course) {
   //   setEditCourseId(course.id)
   // }
-
 
   return (
     <div className=''>
@@ -22,7 +21,7 @@ const CoursesTable = ({ courses, setCourses }) => {
             <th>Title</th>
             <th>Company</th>
             <th>Price</th>
-            <th>Month/Year</th>
+            <th>Purchase Date</th>
           </tr>
         </thead>
         <tbody>
@@ -35,12 +34,15 @@ const CoursesTable = ({ courses, setCourses }) => {
                   <td>{course.price}</td>
                   <td>{course.purchase_date}</td>
                   <td>
-                    <button
-                    // onClick={() => handleClick(course)}
-                    // classname='button'
+                    <Link
+                      to={`/course/${course.id}/`}
+                      className=''
+                      // onClick={() => handleClick(course)}
+                      // classname='button'
                     >
                       Details
-                    </button>
+                    </Link>
+                    <Outlet></Outlet>
                   </td>
                 </tr>
               );
