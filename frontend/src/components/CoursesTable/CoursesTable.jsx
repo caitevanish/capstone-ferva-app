@@ -34,12 +34,7 @@ const CoursesTable = ({ courses, setCourses, setCourseDetails }) => {
                   <td>{course.price}</td>
                   <td>{course.purchase_date}</td>
                   <td>
-                    <Link
-                      to={`/course/${course.id}/`}
-                      className=''
-                      // onClick={() => handleClick(course)}
-                      // classname='button'
-                    >
+                    <Link to={`/course/${course.id}/`} className='button'>
                       Details
                     </Link>
                     <Outlet></Outlet>

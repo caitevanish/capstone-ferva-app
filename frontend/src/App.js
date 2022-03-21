@@ -71,7 +71,7 @@ function App() {
           }
         />
         <Route
-          path='/course/:id'
+          path='/course/:id/'
           element={
             <PrivateRoute>
               <CourseDetailPage courses={courses} />
