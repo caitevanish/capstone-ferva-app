@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
-const AddCourseForm = ({ setModalIsOpen }) => {
+const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
@@ -11,6 +12,7 @@ const AddCourseForm = ({ setModalIsOpen }) => {
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newPurchaseType, setNewPurchaseType] = useState('');
+  
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,6 +22,7 @@ const AddCourseForm = ({ setModalIsOpen }) => {
       purchase_date: newPurchaseDate,
       price: newPrice,
       purchase_type: newPurchaseType,
+      notes: '',
     };
     addCourse(newCourse);
     //close modal? modal is open=false?
@@ -27,8 +30,8 @@ const AddCourseForm = ({ setModalIsOpen }) => {
 
   async function addCourse(course) {
     try {
-      console.log('course test', course);
-      console.log('token test', token);
+      // console.log('course test', course);
+      // console.log('token test', token);
       let result = await axios.post(
         `http://127.0.0.1:8000/api/courses/add/`,
         course,
@@ -39,6 +42,13 @@ const AddCourseForm = ({ setModalIsOpen }) => {
         }
       );
       console.log(result);
+      // setCourses();
+      if (result.request.status === 201) {
+        alert('New course added');
+        setModalIsOpen(false);
+        // return (window.location = `/course/${id}`);
+        return;
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -81,7 +91,7 @@ const AddCourseForm = ({ setModalIsOpen }) => {
           <input
             type='number'
             onChange={(event) => setNewPrice(event.target.value)}
-            value={newPrice}
+            value={parseInt(newPrice)}
             className='form-control'
           />
         </label>

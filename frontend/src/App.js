@@ -58,6 +58,7 @@ function App() {
                 token={token}
                 courses={courses}
                 setCourses={setCourses}
+                
               />
             </PrivateRoute>
           }

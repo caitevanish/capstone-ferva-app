@@ -11,7 +11,7 @@ class Course(models.Model):
   # project_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE) #Do I need to pass something in the first argument?
   # goal_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE) #Same question.
   is_active = models.BooleanField(default=True)
-  notes = models.TextField(max_length=1000)
+  notes = models.TextField(max_length=1000, blank=True, null=True)
 
 
   def __str__(self):

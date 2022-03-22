@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useNavigate, useParams, Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
 
 const CourseDetailPage = () => {
   const [, token] = useAuth();
   const [courseDetails, setCourseDetails] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   //Ask Dan or teachers how to
   useEffect(() => {
@@ -43,6 +44,7 @@ const CourseDetailPage = () => {
         }
       );
       console.log(result);
+      navigate('/courses/');
       //return back to all courses page
     } catch {
       console.log('error. Something went wrong');
