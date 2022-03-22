@@ -5,8 +5,9 @@ import Modal from 'react-modal';
 import UpdateCourseForm from '../../components/Forms/UpdateCourseForm/UpdateCourseForm';
 import axios from 'axios';
 
-const CourseDetailPage = () => {
+const CourseDetailPage = (props) => {
   const [, token] = useAuth();
+  const { rqstRld } = props;
   const [courseDetails, setCourseDetails] = useState([]);
   const { id } = useParams();
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -47,8 +48,8 @@ const CourseDetailPage = () => {
         }
       );
       console.log(result);
+      rqstRld(); //THIS WORKS
       navigate('/courses/');
-      //return back to all courses page
     } catch {
       console.log('error. Something went wrong');
     }
@@ -91,6 +92,7 @@ const CourseDetailPage = () => {
           setModalIsOpen={setModalIsOpen}
           id={id}
           courseDetails={courseDetails}
+          rqstRld={rqstRld}
         />
         <button onClick={() => setModalIsOpen(false)}>Close</button>
       </Modal>

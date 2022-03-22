@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-const CoursesTable = ({ courses, setCourses, setCourseDetails }) => {
+const CoursesTable = (props) => {
+  const { courses } = props;
   // const [user, token] = useAuth();
   // const [courseTable, setCoursesTable] = useState([]);
 

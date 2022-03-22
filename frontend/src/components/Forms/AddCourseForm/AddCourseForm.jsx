@@ -3,7 +3,7 @@ import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
-const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
+const AddCourseForm = ({ setModalIsOpen, setCourses, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
@@ -40,11 +40,10 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
         }
       );
       console.log(result);
-      // setCourses();
+      
       if (result.request.status === 201) {
-        alert('New course added');
+        rqstRld(); //THIS WORKS
         setModalIsOpen(false);
-        // return (window.location = `/course/${id}`);
         return;
       }
     } catch (error) {
@@ -63,7 +62,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
             type='text'
             onChange={(event) => setNewTitle(event.target.value)}
             value={newTitle}
-            className='form-control' // ??
+            className='form-control'
           />
         </label>
         <label htmlFor='course-company'>

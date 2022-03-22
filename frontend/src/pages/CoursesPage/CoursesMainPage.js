@@ -7,18 +7,18 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/AddCourseForm/AddCourseForm';
 
-const CoursesMainPage = ({ courses, setCourses }) => {
+const CoursesMainPage = ({ courses, setCourses, rqstRld }) => {
   const [user, token] = useAuth();
   // const [courses, setCourses] = useState([]);
-  const [courseDetails, setCourseDetails] = useState([]);
+  // const [courseDetails, setCourseDetails] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   //-----------To-Do:
   //BUG FIX: As of now, when I switch to the course amin page i need to reload the screen to see the table filled with details. No good! Tried using the useEffect which calls setCourses, didn't work.
 
   // useEffect(() => {
-  //   setCourses(courses);
-  // }, [courses]);
+  //   // fetchCourses();
+  // }, []);
 
   //-----------To-Do:
 
@@ -30,12 +30,13 @@ const CoursesMainPage = ({ courses, setCourses }) => {
         <AddCourseForm
           setModalIsOpen={setModalIsOpen}
           setCourses={setCourses}
+          rqstRld={rqstRld}
         />
       </Modal>
 
       <CoursesTable
         courses={courses}
-        setCourseDetails={setCourseDetails}
+        // setCourseDetails={setCourseDetails}
         token={token}
       />
     </div>

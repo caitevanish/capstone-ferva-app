@@ -23,26 +23,32 @@ import SideNavbar from './components/SideNavbar/SideNavbar';
 import PrivateRoute from './utils/PrivateRoute';
 import ReactModal from 'react-modal';
 
-ReactModal.setAppElement('#root')
+ReactModal.setAppElement('#root');
 function App() {
   const [user, token] = useAuth();
   const [courses, setCourses] = useState([]);
+  const [requestReload, setRequestReload] = useState(false);
+
+  async function fetchCourses() {
+    try {
+      let response = await axios.get('http://127.0.0.1:8000/api/courses/', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+      setCourses(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        let response = await axios.get('http://127.0.0.1:8000/api/courses/', {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        });
-        setCourses(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchCourses();
-  }, [token]);
+  }, [token, requestReload]);
+
+  const rqstRld = () => {
+    setRequestReload(!requestReload);
+  };
 
   return (
     <div>
@@ -60,7 +66,6 @@ function App() {
                 token={token}
                 courses={courses}
                 setCourses={setCourses}
-                
               />
             </PrivateRoute>
           }
@@ -69,7 +74,11 @@ function App() {
           path='/courses/'
           element={
             <PrivateRoute>
-              <CoursesMainPage courses={courses} setCourses={setCourses} />
+              <CoursesMainPage
+                courses={courses}
+                setCourses={setCourses}
+                rqstRld={rqstRld}
+              />
             </PrivateRoute>
           }
         />
@@ -77,7 +86,7 @@ function App() {
           path='/course/:id/'
           element={
             <PrivateRoute>
-              <CourseDetailPage courses={courses} />
+              <CourseDetailPage courses={courses} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />

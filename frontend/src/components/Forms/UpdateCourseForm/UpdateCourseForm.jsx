@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
+const UpdateCourseForm = (props) => {
+  const { setModalIsOpen, courseDetails, rqstRld } = props;
   const [, token] = useAuth();
+  const navigate = useNavigate();
   const [editTitle, setTitle] = useState(courseDetails.title);
   const [editCompany, setCompany] = useState(courseDetails.company);
   const [editPurchaseDate, setPurchaseDate] = useState(
@@ -22,9 +25,10 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
       purchase_date: editPurchaseDate,
       price: editPrice,
       purchase_type: editPurchaseType,
-      notes: null,
+      notes: '',
     };
     addCourse(editCourse);
+    // rqstRld();
     //close modal? modal is open=false?
   }
 
@@ -42,11 +46,12 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
         }
       );
       console.log(result);
-      // setCourses();
+
       if (result.request.status === 200) {
-        alert('Your course is updated');
+        rqstRld(); //NOT WORKING
+        // navigate(`/course/${course.id}/`);
+        // alert('Your course is updated');
         setModalIsOpen(false);
-        // return (window.location = `/course/${id}`);
         return;
       }
     } catch (error) {
@@ -66,7 +71,7 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
             placeholder={courseDetails.title}
             onChange={(event) => setTitle(event.target.value)}
             value={editTitle}
-            className='form-control' 
+            className='form-control'
           />
         </label>
         <label for='update-company'>
@@ -76,7 +81,7 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
             placeholder={courseDetails.company}
             onChange={(event) => setCompany(event.target.value)}
             value={editCompany}
-            className='form-control' 
+            className='form-control'
           />
         </label>
         <label for='update-purchaseDate'>
@@ -86,7 +91,7 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
             placeholder={courseDetails.purchase_date}
             onChange={(event) => setPurchaseDate(event.target.value)}
             value={editPurchaseDate}
-            className='form-control' 
+            className='form-control'
           />
         </label>
         <label for='update-coursePrice'>
@@ -96,7 +101,7 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
             placeholder={courseDetails.price}
             onChange={(event) => setPrice(event.target.value)}
             value={parseInt(editPrice)}
-            className='form-control' 
+            className='form-control'
           />
         </label>
         <label for='update-purchaseType'>
@@ -106,7 +111,7 @@ const UpdateCourseForm = ({ setModalIsOpen, courseDetails }) => {
             placeholder={courseDetails.purchase_type}
             onChange={(event) => setPurchaseType(event.target.value)}
             value={editPurchaseType}
-            className='form-control' 
+            className='form-control'
           />
         </label>
         <button onClick={() => setModalIsOpen(false)}>Close</button>
