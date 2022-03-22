@@ -31,7 +31,6 @@ const CoursesMainPage = ({ courses, setCourses }) => {
           setModalIsOpen={setModalIsOpen}
           setCourses={setCourses}
         />
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
       </Modal>
 
       <CoursesTable

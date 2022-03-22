@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Modal from 'react-modal';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +11,6 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newPurchaseType, setNewPurchaseType] = useState('');
-  
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -59,7 +57,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
     <>
       <h2 className='form-header'>Add a New Course</h2>
       <form onSubmit={handleSubmit}>
-        <label for='course-title'>
+        <label htmlFor='course-title'>
           Course Title
           <input
             type='text'
@@ -68,7 +66,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
             className='form-control' // ??
           />
         </label>
-        <label for='course-company'>
+        <label htmlFor='course-company'>
           Company
           <input
             type='text'
@@ -77,7 +75,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
             className='form-control'
           />
         </label>
-        <label for='course-purchaseDate'>
+        <label htmlFor='course-purchaseDate'>
           Date of Purchase
           <input
             type='date'
@@ -86,7 +84,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
             className='form-control'
           />
         </label>
-        <label for='course-price'>
+        <label htmlFor='course-price'>
           Price
           <input
             type='number'
@@ -95,7 +93,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses }) => {
             className='form-control'
           />
         </label>
-        <label for='course-purchaseType'>
+        <label htmlFor='course-purchaseType'>
           Purchase Type
           <input
             type='text'

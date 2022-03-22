@@ -21,7 +21,9 @@ import SideNavbar from './components/SideNavbar/SideNavbar';
 
 // Util Imports
 import PrivateRoute from './utils/PrivateRoute';
+import ReactModal from 'react-modal';
 
+ReactModal.setAppElement('#root')
 function App() {
   const [user, token] = useAuth();
   const [courses, setCourses] = useState([]);

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate, useParams, Link, Outlet } from 'react-router-dom';
+import Modal from 'react-modal';
+import UpdateCourseForm from '../../components/Forms/UpdateCourseForm/UpdateCourseForm';
 import axios from 'axios';
 
 const CourseDetailPage = () => {
   const [, token] = useAuth();
   const [courseDetails, setCourseDetails] = useState([]);
   const { id } = useParams();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
   //Ask Dan or teachers how to
@@ -82,11 +85,15 @@ const CourseDetailPage = () => {
       <h3>By completing this course, wouldn't it be great if...</h3>
       <p>{}</p> {/* Add great_if to model and migrate */}
       {/* Add edit course button */}
-      <button>Update</button>
-      {/* <Link to={'#'} className='button'>
-        Update Course Info
-      </Link> */}
-      {/* Add Delete course button -- pop up warning! */}
+      <button onClick={() => setModalIsOpen(true)}>Update</button>
+      <Modal isOpen={modalIsOpen}>
+        <UpdateCourseForm
+          setModalIsOpen={setModalIsOpen}
+          id={id}
+          courseDetails={courseDetails}
+        />
+        <button onClick={() => setModalIsOpen(false)}>Close</button>
+      </Modal>
       <button
         onClick={(event) => handleDelete(event, courseDetails.id)}
         className='btn-danger'
