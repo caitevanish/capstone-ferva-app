@@ -3,6 +3,7 @@ import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
+
 const AddCourseForm = ({ setModalIsOpen, setCourses, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [, token] = useAuth();
@@ -11,6 +12,8 @@ const AddCourseForm = ({ setModalIsOpen, setCourses, rqstRld }) => {
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newPurchaseType, setNewPurchaseType] = useState('');
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -54,7 +57,7 @@ const AddCourseForm = ({ setModalIsOpen, setCourses, rqstRld }) => {
 
   return (
     <>
-      <h2 className='form-header'>Add a New Course</h2>
+      <h2 className='form-header'>Add a New Course</h2>  
       <form onSubmit={handleSubmit}>
         <label htmlFor='course-title'>
           Course Title

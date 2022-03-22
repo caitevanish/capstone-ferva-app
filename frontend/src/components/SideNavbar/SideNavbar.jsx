@@ -31,7 +31,7 @@ const SideNavbar = () => {
               </li>
               <li>
                 <Link
-                  to='/projects/all/'
+                  to='/projects/'
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <b>Projects</b>
@@ -39,7 +39,7 @@ const SideNavbar = () => {
               </li>
               <li>
                 <Link
-                  to='/goals/all/'
+                  to='/goals/'
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <b>Goals</b>

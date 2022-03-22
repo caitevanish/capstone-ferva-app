@@ -4,10 +4,10 @@ from projects import views
 app_name = "projects"
 urlpatterns = [
   #see all projects on the projects page
-  path('all/', views.view_all_projects, name="project_all"),  
+  path('', views.view_all_projects, name="project_all"),  
   
   #see project info on project detail page
-  path('<int:pk>/', views.view_project_detail, name="project_detail"),   #change project_id to pk?
+  path('project/<int:pk>/', views.view_project_detail, name="project_detail"),   #change project_id to pk?
   
   #create new project
   path('add/', views.add_project, name="project_add"),

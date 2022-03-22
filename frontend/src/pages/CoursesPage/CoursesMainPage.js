@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
-import AddCourseForm from '../../components/Forms/AddCourseForm/AddCourseForm';
+import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
 
 const CoursesMainPage = ({ courses, setCourses, rqstRld }) => {
   const [user, token] = useAuth();

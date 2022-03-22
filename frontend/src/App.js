@@ -11,7 +11,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import CoursesMainPage from './pages/CoursesPage/CoursesMainPage';
 import CourseDetailPage from './pages/CoursesPage/CourseDetailPage';
-import ProjectsMainPage from './pages/ProjectsPage/ProjectMainPage';
+import ProjectsMainPage from './pages/ProjectsPage/ProjectsMainPage';
 import GoalsMainPage from './pages/GoalsPage/GoalsMainPage';
 
 // Component Imports
@@ -46,7 +46,8 @@ function App() {
     fetchCourses();
   }, [token, requestReload]);
 
-  const rqstRld = () => {  //Reload the Main Courses table
+  const rqstRld = () => {
+    //Reload the Main Courses table
     setRequestReload(!requestReload);
   };
 
@@ -91,15 +92,15 @@ function App() {
           }
         />
         <Route
-          path='/projects/all/'
+          path='/projects/'
           element={
             <PrivateRoute>
-              <ProjectsMainPage />
+              <ProjectsMainPage rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />
         <Route
-          path='/goals/all/'
+          path='/goals/'
           element={
             <PrivateRoute>
               <GoalsMainPage />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate, useParams, Link, Outlet } from 'react-router-dom';
 import Modal from 'react-modal';
-import UpdateCourseForm from '../../components/Forms/UpdateCourseForm/UpdateCourseForm';
+import UpdateCourseForm from '../../components/Forms/Courses/UpdateCourseForm';
 import axios from 'axios';
 
 const CourseDetailPage = (props) => {
@@ -14,7 +14,6 @@ const CourseDetailPage = (props) => {
   const navigate = useNavigate();
   const [detailReload, setDetailReload] = useState(false);
 
-  //Ask Dan or teachers how to
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
