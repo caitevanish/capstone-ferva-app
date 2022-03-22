@@ -12,6 +12,7 @@ const CourseDetailPage = (props) => {
   const { id } = useParams();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [detailReload, setDetailReload] = useState(false);
 
   //Ask Dan or teachers how to
   useEffect(() => {
@@ -31,9 +32,13 @@ const CourseDetailPage = (props) => {
       }
     };
     fetchCourseDetails();
-  }, [id]); //useEffect gets triggered once [], or if the values change [token], [id]
+    //useEffect gets triggered once [], or if the values change [token], [id], or can take multiple parameters!
+  }, [id, detailReload]);
 
-  // Set Delete up like fetchCourseDetails?
+  const dtlRld = () => {
+    //Reload the Main Courses table
+    setDetailReload(!detailReload);
+  };
 
   async function handleDelete(event, id) {
     event.preventDefault();
@@ -48,7 +53,7 @@ const CourseDetailPage = (props) => {
         }
       );
       console.log(result);
-      rqstRld(); //THIS WORKS
+      rqstRld(); //Request to reload page
       navigate('/courses/');
     } catch {
       console.log('error. Something went wrong');
@@ -58,12 +63,10 @@ const CourseDetailPage = (props) => {
 
   return (
     <div>
-      {/* Add back button */}
       <Link to={'/courses/'} className='button'>
         Back to Courses
       </Link>
       <h1>Details for {courseDetails.title} Course</h1>
-      {/* <Outlet></Outlet> */}
       <div className='row'>
         <h3>Company:</h3>
         <p>{courseDetails.company}</p>
@@ -92,6 +95,7 @@ const CourseDetailPage = (props) => {
           setModalIsOpen={setModalIsOpen}
           id={id}
           courseDetails={courseDetails}
+          dtlRld={dtlRld}
           rqstRld={rqstRld}
         />
         <button onClick={() => setModalIsOpen(false)}>Close</button>

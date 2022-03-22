@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const UpdateCourseForm = (props) => {
-  const { setModalIsOpen, courseDetails, rqstRld } = props;
+  const { setModalIsOpen, courseDetails, dtlRld, rqstRld } = props;
   const [, token] = useAuth();
-  const navigate = useNavigate();
   const [editTitle, setTitle] = useState(courseDetails.title);
   const [editCompany, setCompany] = useState(courseDetails.company);
   const [editPurchaseDate, setPurchaseDate] = useState(
@@ -48,9 +46,8 @@ const UpdateCourseForm = (props) => {
       console.log(result);
 
       if (result.request.status === 200) {
-        rqstRld(); //NOT WORKING
-        // navigate(`/course/${course.id}/`);
-        // alert('Your course is updated');
+        dtlRld(); //WORKING!
+        rqstRld();
         setModalIsOpen(false);
         return;
       }

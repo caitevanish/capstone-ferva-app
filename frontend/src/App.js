@@ -46,7 +46,7 @@ function App() {
     fetchCourses();
   }, [token, requestReload]);
 
-  const rqstRld = () => {
+  const rqstRld = () => {  //Reload the Main Courses table
     setRequestReload(!requestReload);
   };
 
