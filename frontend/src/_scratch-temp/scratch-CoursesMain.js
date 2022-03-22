@@ -1,6 +1,5 @@
 //   <<<<CoursesMainPage.js>>>>>>
 
-
 //-----------Saturday 3/20:
 
 // useEffect(() => {
@@ -21,3 +20,21 @@
 //     };
 //     fetchCourses();
 //   }, [token]);
+
+//-----------Monday 3/21:
+
+// useEffect(() => {
+//   const fetchCourseDetails = async () => {
+//     try {
+//       let response = await axios.get('http://127.0.0.1:8000/api/courses/course/<int:pk>/', {
+//         headers: {
+//           Authorization: 'Bearer ' + token,
+//         },
+//       });
+//       setCourseDetails(response.data);
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+//   fetchCourseDetails();
+// }, [token]);

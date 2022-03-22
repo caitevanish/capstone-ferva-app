@@ -20,8 +20,8 @@ const CoursesTable = ({ courses, setCourses, setCourseDetails }) => {
           <tr>
             <th>Title</th>
             <th>Company</th>
-            <th>Price</th>
             <th>Purchase Date</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +31,8 @@ const CoursesTable = ({ courses, setCourses, setCourseDetails }) => {
                 <tr key={index}>
                   <td>{course.title}</td>
                   <td>{course.company}</td>
-                  <td>{course.price}</td>
                   <td>{course.purchase_date}</td>
+                  <td>{course.price}</td>
                   <td>
                     <Link to={`/course/${course.id}/`} className='button'>
                       Details
