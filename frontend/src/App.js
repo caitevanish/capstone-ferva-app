@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useAuth from './hooks/useAuth';
+// import useRequestReload from './_scratch-temp/useRequestReload'; //Attempt to make a customHook
 import './App.css';
 
 // Pages Imports
@@ -25,8 +26,10 @@ import ReactModal from 'react-modal';
 
 ReactModal.setAppElement('#root');
 function App() {
+  // const rqstRld  = useRequestReload()
   const [user, token] = useAuth();
   const [courses, setCourses] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [requestReload, setRequestReload] = useState(false);
 
   async function fetchCourses() {
@@ -42,8 +45,22 @@ function App() {
     }
   }
 
+  async function fetchProjects() {
+    try {
+      let response = await axios.get('http://127.0.0.1:8000/api/projects/', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+      setProjects(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     fetchCourses();
+    fetchProjects();
   }, [token, requestReload]);
 
   const rqstRld = () => {
@@ -62,12 +79,7 @@ function App() {
           path='/'
           element={
             <PrivateRoute>
-              <HomePage
-                user={user}
-                token={token}
-                courses={courses}
-                setCourses={setCourses}
-              />
+              <HomePage user={user} token={token} courses={courses} />
             </PrivateRoute>
           }
         />
@@ -75,11 +87,7 @@ function App() {
           path='/courses/'
           element={
             <PrivateRoute>
-              <CoursesMainPage
-                courses={courses}
-                setCourses={setCourses}
-                rqstRld={rqstRld}
-              />
+              <CoursesMainPage courses={courses} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />
@@ -95,7 +103,7 @@ function App() {
           path='/projects/'
           element={
             <PrivateRoute>
-              <ProjectsMainPage rqstRld={rqstRld} />
+              <ProjectsMainPage projects={projects} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />
@@ -103,7 +111,7 @@ function App() {
           path='/goals/'
           element={
             <PrivateRoute>
-              <GoalsMainPage />
+              <GoalsMainPage rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />

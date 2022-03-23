@@ -4,13 +4,12 @@ import Modal from 'react-modal';
 
 import useAuth from '../../hooks/useAuth';
 import AddProjectForm from '../../components/Forms/Projects/AddProjectForm';
+import ProjectsTable from '../../components/ProjectsTable/ProjectsTable';
 
 const ProjectsMainPage = (props) => {
-  const { rqstRld } = props;
+  const { projects, rqstRld } = props;
   const [user, token] = useAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  useEffect(() => {}, [token]);
 
   return (
     <div className='container'>
@@ -19,6 +18,8 @@ const ProjectsMainPage = (props) => {
       <Modal isOpen={modalIsOpen}>
         <AddProjectForm setModalIsOpen={setModalIsOpen} rqstRld={rqstRld} />
       </Modal>
+
+      <ProjectsTable projects={projects} />
     </div>
   );
 };
