@@ -1,7 +1,7 @@
 from django.db import models
 from courses.models import Course
 from projects.models import Project
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Goal(models.Model):
@@ -11,7 +11,7 @@ class Goal(models.Model):
     ('LT', 'Long Term'),
   ]
 
-
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=100)
   description = models.TextField(max_length=3000, null=True, blank=True)
   start_date = models.DateField(null=True, blank=True)
