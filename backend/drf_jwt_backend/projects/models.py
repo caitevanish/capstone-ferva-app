@@ -8,7 +8,7 @@ class Project(models.Model):
   #Make choices for category of projects (personal, professional, etc.)
 
   title = models.CharField(max_length=30)
-  description = models.TextField(max_length=1000)
+  description = models.TextField(max_length=1000, null=True, blank=True)
   start_date = models.DateField(null=True, blank=True)
   is_active = models.BooleanField(default=True)
   has_deadline = models.BooleanField(default=False)
@@ -18,7 +18,7 @@ class Project(models.Model):
   has_milestones = models.BooleanField(default=False)
   # milestone_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE)
   course = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
-  notes = models.TextField(max_length=1000)
+  notes = models.TextField(max_length=1000, null=True, blank=True)
   # images = models.CharField(max_length=1000)
 
   def __str__(self):
