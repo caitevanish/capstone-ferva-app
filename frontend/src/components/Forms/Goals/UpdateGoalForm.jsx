@@ -3,16 +3,14 @@ import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 import InputField from '../../InputField/InputField';
 
-const UpdateProjectForm = (props) => {
-  const { setModalIsOpen, projectDetails, dtlRld, rqstRld } = props;
+const UpdateGoalForm = (props) => {
+  const { setModalIsOpen, goalDetails, dtlRld, rqstRld } = props;
   const [, token] = useAuth();
-  const [editTitle, setTitle] = useState(projectDetails.title);
-  const [editDescription, setDescription] = useState(
-    projectDetails.description
-  );
-  const [editStartDate, setStartDate] = useState(projectDetails.start_date);
+  const [editTitle, setTitle] = useState(goalDetails.title);
+  const [editDescription, setDescription] = useState(goalDetails.description);
+  const [editStartDate, setStartDate] = useState(goalDetails.start_date);
   const [editDeadlineDate, setDeadlineDate] = useState(
-    projectDetails.deadline_date
+    goalDetails.deadline_date
   );
 
   const handleTitle = (event) => setTitle(event.target.value);
@@ -22,23 +20,24 @@ const UpdateProjectForm = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let editProject = {
+    let newGoal = {
       title: editTitle,
       description: editDescription,
       start_date: editStartDate,
+      // goal_type: newType,
+      projects: [''],
+      courses: [''],
       deadline_date: editDeadlineDate,
       notes: '',
     };
-    addProject(editProject);
+    addGoal(newGoal);
   }
 
-  async function addProject(project) {
+  async function addGoal(goal) {
     try {
-      // console.log('project test', project);
-      // console.log('token test', token);
       let result = await axios.put(
-        `http://127.0.0.1:8000/api/projects/${projectDetails.id}/update/`,
-        project,
+        `http://127.0.0.1:8000/api/goals/${goalDetails.id}/update/`,
+        goal,
         {
           headers: {
             Authorization: 'Bearer ' + token,
@@ -48,7 +47,7 @@ const UpdateProjectForm = (props) => {
       console.log(result);
 
       if (result.request.status === 200) {
-        dtlRld(); //WORKING!
+        dtlRld();
         rqstRld();
         setModalIsOpen(false);
         return;
@@ -58,32 +57,33 @@ const UpdateProjectForm = (props) => {
     }
     return;
   }
+
   return (
     <>
-      <h2 className='form-header'>Update your project details</h2>
+      <h2 className='form-header'>Update your goal details</h2>
       <form onSubmit={handleSubmit}>
         <InputField
-          label='Project Title' //h3 styling
-          htmlFor='project-title'
+          label='Goal Title'
+          htmlFor='goal-title'
           value={editTitle}
           onChange={handleTitle}
         />
         <InputField
           label='Description'
-          htmlFor='project-description'
+          htmlFor='goal-description'
           value={editDescription}
           onChange={handleDescription}
         />
         <InputField
           label='Start Date'
-          htmlFor='project-start'
+          htmlFor='goal-start'
           value={editStartDate}
           onChange={handleStartDate}
           type='date'
         />
         <InputField
           label='Deadline'
-          htmlFor='project-deadline'
+          htmlFor='goal-deadline'
           value={editDeadlineDate}
           onChange={handleDeadlineDate}
           type='date'
@@ -95,4 +95,4 @@ const UpdateProjectForm = (props) => {
   );
 };
 
-export default UpdateProjectForm;
+export default UpdateGoalForm;

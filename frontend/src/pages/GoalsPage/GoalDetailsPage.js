@@ -2,33 +2,33 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import UpdateProjectForm from '../../components/Forms/Projects/UpdateProjectForm';
+import UpdateGoalForm from '../../components/Forms/Goals/UpdateGoalForm';
 import axios from 'axios';
 
-const ProjectDetailPage = (props) => {
+const GoalDetailPage = (props) => {
   const [, token] = useAuth();
   const { rqstRld } = props;
   const { id } = useParams();
-  const [projectDetails, setProjectDetails] = useState([]);
+  const [goalDetails, setGoalDetails] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const [detailReload, setDetailReload] = useState(false);
 
   useEffect(() => {
-    fetchProjectDetails();
+    fetchGoalDetails();
   }, [id, detailReload]);
 
-  async function fetchProjectDetails() {
+  async function fetchGoalDetails() {
     try {
       let response = await axios.get(
-        `http://127.0.0.1:8000/api/projects/project/${id}/`,
+        `http://127.0.0.1:8000/api/goals/goal/${id}/`,
         {
           headers: {
             Authorization: 'Bearer ' + token,
           },
         }
       );
-      setProjectDetails(response.data);
+      setGoalDetails(response.data);
     } catch (error) {
       // console.log(error.message);
     }
@@ -39,7 +39,7 @@ const ProjectDetailPage = (props) => {
     //have pop up window to warn user
     try {
       let result = await axios.delete(
-        `http://127.0.0.1:8000/api/projects/${id}/delete/`,
+        `http://127.0.0.1:8000/api/goals/${id}/delete/`,
         {
           headers: {
             Authorization: 'Bearer ' + token,
@@ -48,7 +48,7 @@ const ProjectDetailPage = (props) => {
       );
       console.log(result);
       rqstRld(); //Request to reload page
-      navigate('/projects/');
+      navigate('/goals/');
     } catch {
       console.log('error. Something went wrong');
     }
@@ -59,46 +59,44 @@ const ProjectDetailPage = (props) => {
     //Reload the Main Courses table
     setDetailReload(!detailReload);
   };
-
   return (
     <>
-      <Link to={'/projects/'} className='button'>
-        Back to Projects
+      <Link to={'/goals/'} className='button'>
+        Back to Goals
       </Link>
 
-      <h1>Details for {projectDetails.title} Project</h1>
+      <h1>Details for {goalDetails.title} Goal</h1>
 
       <div className='row'>
-        <h3>Project Name</h3>
-        <p>{projectDetails.title}</p>
+        <h3>Goal Name</h3>
+        <p>{goalDetails.title}</p>
       </div>
       <div className='row'>
         <h3>Description</h3>
-        <p>{projectDetails.description}</p>
+        <p>{goalDetails.description}</p>
       </div>
       <div className='row'>
         <h3>Start Date:</h3>
-        <p>{projectDetails.start_date}</p>
+        <p>{goalDetails.start_date}</p>
         <h3>Deadline:</h3>
-        <p>{projectDetails.deadline_date}</p>
+        <p>{goalDetails.deadline_date}</p>
       </div>
       <div className='col-1'>
         <h3>By completing this course, wouldn't it be great if...</h3>
         <p>{}</p> {/* Add great_if to model and migrate */}
       </div>
-
       <button onClick={() => setModalIsOpen(true)}>Update</button>
       <Modal isOpen={modalIsOpen}>
-        <UpdateProjectForm
+        <UpdateGoalForm
           setModalIsOpen={setModalIsOpen}
           id={id}
-          projectDetails={projectDetails}
+          goalDetails={goalDetails}
           dtlRld={dtlRld}
           rqstRld={rqstRld}
         />
       </Modal>
       <button
-        onClick={(event) => handleDelete(event, projectDetails.id)}
+        onClick={(event) => handleDelete(event, goalDetails.id)}
         className='btn-danger'
       >
         Delete
@@ -107,4 +105,4 @@ const ProjectDetailPage = (props) => {
   );
 };
 
-export default ProjectDetailPage;
+export default GoalDetailPage;

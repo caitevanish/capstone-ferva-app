@@ -15,6 +15,7 @@ import CourseDetailPage from './pages/CoursesPage/CourseDetailPage';
 import ProjectsMainPage from './pages/ProjectsPage/ProjectsMainPage';
 import ProjectDetailsPage from './pages/ProjectsPage/ProjectDetailsPage';
 import GoalsMainPage from './pages/GoalsPage/GoalsMainPage';
+import GoalDetailsPage from './pages/GoalsPage/GoalDetailsPage';
 
 // Component Imports
 import TopNavbar from './components/TopNavbar/TopNavbar';
@@ -68,6 +69,7 @@ function App() {
         },
       });
       setGoals(response.data);
+      console.log("Goal data: ", response.data)
     } catch (error) {
       console.log(error.message);
     }
@@ -136,6 +138,14 @@ function App() {
           element={
             <PrivateRoute>
               <GoalsMainPage goals={goals} rqstRld={rqstRld} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/goal/:id/'
+          element={
+            <PrivateRoute>
+              <GoalDetailsPage goals={goals} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />

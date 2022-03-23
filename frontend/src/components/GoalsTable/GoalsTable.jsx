@@ -12,6 +12,7 @@ const GoalsTable = (props) => {
           <tr>
             <th>Title</th>
             <th>Description</th>
+            <th>Start date</th>
             <th>Deadline</th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@ const GoalsTable = (props) => {
                 <tr key={index}>
                   <td>{goal.title}</td>
                   <td>{goal.description}</td>
+                  <td>{goal.start_date}</td>
                   <td>{goal.deadline_date}</td>
                   <td>
                     <Link to={`/goal/${goal.id}/`} className='button'>
