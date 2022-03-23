@@ -1,41 +1,36 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import axios from "axios";
-import useAuth from "../../hooks/useAuth";
+// Pages Imports
 
-const HomePage = () => {
+// Component Imports
+
+// Util Imports
+import PrivateRoute from '../../utils/PrivateRoute';
+import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
+
+const HomePage = ({ user, token, courses, setCourses }) => {
+ // const [user, token] = useAuth(); 
+  
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
-  const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setCars(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchCars();
-  }, [token]);
+  
+
+
   return (
-    <div className="container">
-      <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
+    <div>
+      <div className='container'>
+        <h1>Home Page for {user.username}!</h1>
+        {/* Top 3 Courses Table */}
+        {/* Top 3 Projects Table */}
+      </div>
     </div>
   );
 };
 
 export default HomePage;
+
+//Past Code saved @ _scratch-temp > scratch-HomePage.js
