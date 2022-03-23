@@ -1,17 +1,19 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import { Routes, Route } from 'react-router-dom';
 
 // Pages Imports
 
 // Component Imports
 
 // Util Imports
-import PrivateRoute from '../../utils/PrivateRoute';
-import axios from 'axios';
-import useAuth from '../../hooks/useAuth';
 
-const HomePage = ({ user, token, courses, setCourses }) => {
+// import PrivateRoute from '../../utils/PrivateRoute';
+// import axios from 'axios';
+// import useAuth from '../../hooks/useAuth';
+
+const HomePage = ({ user, token}) => {
+  console.log(user)
  // const [user, token] = useAuth(); 
   
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)

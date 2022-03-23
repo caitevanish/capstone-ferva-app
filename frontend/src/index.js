@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import {Chart, registerables} from 'chart.js/auto';
+
 
 ReactDOM.render(
   <React.StrictMode>

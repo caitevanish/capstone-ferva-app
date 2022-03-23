@@ -1,7 +1,9 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CoursesTable from '../../components/CoursesTable/CoursesTable';
 import Modal from 'react-modal';
+import BarChart from '../../components/Chart/BarChart';
+// import LineChart from '../../components/Chart/LineChart';
 
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
@@ -35,6 +37,7 @@ const CoursesMainPage = (props) => {
         // setCourseDetails={setCourseDetails}
         token={token}
       />
+      <BarChart />
     </div>
   );
 };

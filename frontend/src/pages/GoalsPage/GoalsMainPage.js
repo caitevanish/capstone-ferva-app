@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 
 import useAuth from '../../hooks/useAuth';
@@ -9,7 +9,7 @@ import GoalsTable from '../../components/GoalsTable/GoalsTable';
 const GoalsMainPage = (props) => {
   //Use const or function?
   const { goals, rqstRld } = props;
-  const [user,] = useAuth();
+  const [user] = useAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (

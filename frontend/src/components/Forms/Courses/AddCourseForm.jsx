@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
 
 const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);

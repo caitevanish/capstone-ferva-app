@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import { useNavigate, useParams, Link, Outlet } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import UpdateCourseForm from '../../components/Forms/Courses/UpdateCourseForm';
 import axios from 'axios';
