@@ -15,6 +15,6 @@ urlpatterns = [
   #update project info
   path('<int:pk>/update/', views.edit_project, name="project_update"),
 
-  #update project info
+  #delete project info
   path('<int:pk>/delete/', views.delete_project, name="project_delete"),   
 ]

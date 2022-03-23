@@ -19,7 +19,7 @@ urlpatterns = [
   path('<int:pk>/update/', views.edit_course, name="course_update"),
 
   #Delete course info
-  path('<int:pk>/delete/', views.delete_course, name="course_delete"),   
+  path('course/<int:pk>/delete/', views.delete_course, name="course_delete"),   
 ]
 
 
