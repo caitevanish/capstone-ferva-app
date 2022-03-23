@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 import useAuth from '../../hooks/useAuth';
-import AddGoalForm from '../../components/Forms/Goals/AddGoalForm' 
+import AddGoalForm from '../../components/Forms/Goals/AddGoalForm';
+import GoalsTable from '../../components/GoalsTable/GoalsTable';
 
-const GoalsMainPage = () => {
+const GoalsMainPage = (props) => {
   //Use const or function?
-  const [user, token] = useAuth();
-
-  useEffect(() => {}, [token]);
+  const { goals, rqstRld } = props;
+  const [user,] = useAuth();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className='container'>
@@ -18,6 +19,8 @@ const GoalsMainPage = () => {
       <Modal isOpen={modalIsOpen}>
         <AddGoalForm setModalIsOpen={setModalIsOpen} rqstRld={rqstRld} />
       </Modal>
+
+      <GoalsTable goals={goals} />
     </div>
   );
 };

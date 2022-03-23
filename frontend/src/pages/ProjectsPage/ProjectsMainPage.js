@@ -8,7 +8,7 @@ import ProjectsTable from '../../components/ProjectsTable/ProjectsTable';
 
 const ProjectsMainPage = (props) => {
   const { projects, rqstRld } = props;
-  const [user, token] = useAuth();
+  const [user] = useAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (

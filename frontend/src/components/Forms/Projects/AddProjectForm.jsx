@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import InputField from '../../InputField/InputField';
 import useAuth from '../../../hooks/useAuth';
+import axios from 'axios';
 
 const AddProjectForm = (props) => {
+  const { setModalIsOpen, rqstRld } = props;
   const [, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
   const [newCompany, setNewCompany] = useState('');
@@ -17,7 +19,6 @@ const AddProjectForm = (props) => {
   // const handle = event =>
   // const handle = event =>
 
-  
   return (
     <>
       <InputField

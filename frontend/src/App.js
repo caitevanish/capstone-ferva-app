@@ -30,6 +30,7 @@ function App() {
   const [user, token] = useAuth();
   const [courses, setCourses] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [goals, setGoals] = useState([]);
   const [requestReload, setRequestReload] = useState(false);
 
   async function fetchCourses() {
@@ -58,9 +59,23 @@ function App() {
     }
   }
 
+  async function fetchGoals() {
+    try {
+      let response = await axios.get('http://127.0.0.1:8000/api/goals/', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+      setGoals(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     fetchCourses();
     fetchProjects();
+    fetchGoals();
   }, [token, requestReload]);
 
   const rqstRld = () => {
@@ -111,7 +126,7 @@ function App() {
           path='/goals/'
           element={
             <PrivateRoute>
-              <GoalsMainPage rqstRld={rqstRld} />
+              <GoalsMainPage goals={goals} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />
