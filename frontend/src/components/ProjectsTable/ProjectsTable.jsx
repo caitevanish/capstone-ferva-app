@@ -13,6 +13,7 @@ const ProjectsTable = (props) => {
             <th>Title</th>
             <th>Description</th>
             <th>Start Date</th>
+            <th>Deadline</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@ const ProjectsTable = (props) => {
                   <td>{project.title}</td>
                   <td>{project.description}</td>
                   <td>{project.start_date}</td>
+                  <td>{project.deadline_date}</td>
                   <td>
                     <Link to={`/project/${project.id}/`} className='button'>
                       Details

@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import CoursesMainPage from './pages/CoursesPage/CoursesMainPage';
 import CourseDetailPage from './pages/CoursesPage/CourseDetailPage';
 import ProjectsMainPage from './pages/ProjectsPage/ProjectsMainPage';
+import ProjectDetailsPage from './pages/ProjectsPage/ProjectDetailsPage';
 import GoalsMainPage from './pages/GoalsPage/GoalsMainPage';
 
 // Component Imports
@@ -119,6 +120,14 @@ function App() {
           element={
             <PrivateRoute>
               <ProjectsMainPage projects={projects} rqstRld={rqstRld} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/project/:id/'
+          element={
+            <PrivateRoute>
+              <ProjectDetailsPage projects={projects} rqstRld={rqstRld} />
             </PrivateRoute>
           }
         />

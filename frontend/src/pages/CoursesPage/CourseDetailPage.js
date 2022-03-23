@@ -67,6 +67,8 @@ const CourseDetailPage = (props) => {
       </Link>
       <h1>Details for {courseDetails.title} Course</h1>
       <div className='row'>
+        <h3>Course:</h3>
+        <p>{courseDetails.title}</p>
         <h3>Company:</h3>
         <p>{courseDetails.company}</p>
         <h3>Purchase Date:</h3>
@@ -97,7 +99,6 @@ const CourseDetailPage = (props) => {
           dtlRld={dtlRld}
           rqstRld={rqstRld}
         />
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
       </Modal>
       <button
         onClick={(event) => handleDelete(event, courseDetails.id)}

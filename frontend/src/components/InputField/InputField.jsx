@@ -1,9 +1,16 @@
 import React from 'react';
 
-const InputField = ({ label, type='text', value, className, onChange }) => {
+const InputField = ({
+  label,
+  htmlFor,
+  type = 'text',
+  value,
+  className = 'form-control',
+  onChange,
+}) => {
   return (
     <div>
-      <label>{label}</label>
+      <label htmlFor={htmlFor}>{label}</label>
       <input
         type={type}
         value={value}
