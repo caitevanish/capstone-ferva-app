@@ -11,7 +11,7 @@ const SideNavbar = () => {
   const [user] = useAuth();
 
   // create all listed items into a sideNavbar-menu-link component and instantiate onto the page to practice DRY
-  const 
+   
 
   return (
     <>

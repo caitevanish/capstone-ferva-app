@@ -61,7 +61,7 @@ const ProjectDetailPage = (props) => {
   };
 
   return (
-    <>
+    <div className='container'>
       <Link to={'/projects/'} className='button'>
         Back to Projects
       </Link>
@@ -103,7 +103,7 @@ const ProjectDetailPage = (props) => {
       >
         Delete
       </button>
-    </>
+    </div>
   );
 };
 

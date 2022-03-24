@@ -17,8 +17,8 @@ from .serializers import CourseSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_all_courses(request):
-  # courses = Course.objects.filter(user_id=request.user.id)
-  courses = Course.objects.all()
+  courses = Course.objects.filter(user_id=request.user.id)
+  #courses = Course.objects.filter(user__id = pk)
   serializer = CourseSerializer(courses, many=True)
   return Response(serializer.data)
 
@@ -48,7 +48,7 @@ def view_top_courses(request):
 def add_course(request):
   serializer = CourseSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save()   #Does something go in the argument?
+    serializer.save(user = request.user)   #Does something go in the argument?
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

@@ -61,7 +61,7 @@ const CourseDetailPage = (props) => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <Link to={'/courses/'} className='button'>
         Back to Courses
       </Link>

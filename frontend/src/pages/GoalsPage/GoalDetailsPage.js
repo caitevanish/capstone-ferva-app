@@ -60,7 +60,7 @@ const GoalDetailPage = (props) => {
     setDetailReload(!detailReload);
   };
   return (
-    <>
+    <div className='container'>
       <Link to={'/goals/'} className='button'>
         Back to Goals
       </Link>
@@ -101,7 +101,7 @@ const GoalDetailPage = (props) => {
       >
         Delete
       </button>
-    </>
+    </div>
   );
 };
 

@@ -9,18 +9,18 @@ const BarChart = () => {
 
   // var baseUrl = "https://"
 
-  async function fetchData() {
-    try {
-      let response = await axios.get('http://127.0.0.1:8000/api/projects/', {
-        headers: {
-          Authorization: 'Bearer ' + token,
-        },
-      });
-      setChart(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  // async function fetchData() {
+  //   try {
+  //     let response = await axios.filter('http://127.0.0.1:8000/api/projects/', {
+  //       headers: {
+  //         Authorization: 'Bearer ' + token,
+  //       },
+  //     });
+  //     setChart(response.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   // useEffect(() => {
   //   const fetchData();

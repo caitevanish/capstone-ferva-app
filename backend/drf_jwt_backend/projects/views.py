@@ -16,8 +16,8 @@ from .serializers import ProjectSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_all_projects(request):
-  # projects = Project.objects.filter(user_id=request.user.id)
-  projects = Project.objects.all()
+  projects = Project.objects.filter(user_id=request.user.id)
+  # projects = Project.objects.all()
   serializer = ProjectSerializer(projects, many=True)
   return Response(serializer.data)
 
@@ -46,7 +46,7 @@ def view_top_projects(request):
 def add_project(request):
   serializer = ProjectSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save()   #Does something go in the argument?
+    serializer.save(user=request.user)   #Does something go in the argument?
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

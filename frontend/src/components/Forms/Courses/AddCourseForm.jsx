@@ -3,10 +3,10 @@ import InputField from '../../InputField/InputField';
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 
-const AddCourseForm = ({ user, setModalIsOpen, rqstRld }) => {
+const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const customer = user.user_id;
-  const [, token] = useAuth();
+  const [user, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
   const [newCompany, setNewCompany] = useState('');
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
