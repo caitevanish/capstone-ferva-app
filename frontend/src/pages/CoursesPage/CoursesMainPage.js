@@ -9,8 +9,8 @@ import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
 
 const CoursesMainPage = (props) => {
-  const { courses, rqstRld } = props;
-  const [user, token] = useAuth();
+  const { user, courses, rqstRld } = props;
+  const [, token] = useAuth();
   // const [courses, setCourses] = useState([]);
   // const [courseDetails, setCourseDetails] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -29,7 +29,11 @@ const CoursesMainPage = (props) => {
       <h1>Courses Main Page for {user.username}</h1>
       <button onClick={() => setModalIsOpen(true)}>Add a Course</button>
       <Modal isOpen={modalIsOpen}>
-        <AddCourseForm setModalIsOpen={setModalIsOpen} rqstRld={rqstRld} />
+        <AddCourseForm
+          user={user}
+          setModalIsOpen={setModalIsOpen}
+          rqstRld={rqstRld}
+        />
       </Modal>
 
       <CoursesTable

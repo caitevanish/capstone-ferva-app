@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const AddProjectForm = (props) => {
   const { setModalIsOpen, rqstRld } = props;
-  const [, token] = useAuth();
+  const [user, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [newStartDate, setNewStartDate] = useState('');

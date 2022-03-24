@@ -1,18 +1,56 @@
 import React from 'react';
 // import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import AuthContext from '../../context/AuthContext';
 import useAuth from '../../hooks/useAuth';
-// import "./NavBar.css";
+import './SideNavbar.css';
+
+import { Stack, Link } from '@mui/material';
 
 const SideNavbar = () => {
-  const [user,] = useAuth();
+  const [user] = useAuth();
 
   // create all listed items into a sideNavbar-menu-link component and instantiate onto the page to practice DRY
+  const 
 
   return (
     <>
-      {user && (
+      <div className='sideNavbar'>
+        {user && (
+          <Stack
+            direction={{ xs: 'column' }}
+            alignItems='flex-start'
+            justifyContent='center'
+            spacing={2}
+            gap={2}
+            className='text'
+            style={{ textDecoration: 'none', color: '#FFD6A7' }}
+          >
+            <Link href='/' underline='none'>
+              {'Start Here'}
+            </Link>
+
+            <Link href='/courses/' underline='none'>
+              {'Courses'}
+            </Link>
+
+            <Link href='/projects/' underline='none'>
+              {'Projects'}
+            </Link>
+            <Link href='/goals/' underline='none'>
+              {'Goals'}
+            </Link>
+          </Stack>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default SideNavbar;
+
+{
+  /* {user && (
         <div className='sideNavbar'>
           <nav>
             <ul>
@@ -48,9 +86,5 @@ const SideNavbar = () => {
             </ul>
           </nav>
         </div>
-      )}
-    </>
-  );
-};
-
-export default SideNavbar;
+      )} </>*/
+}

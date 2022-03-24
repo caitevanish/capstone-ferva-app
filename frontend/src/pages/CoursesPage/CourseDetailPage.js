@@ -6,7 +6,7 @@ import UpdateCourseForm from '../../components/Forms/Courses/UpdateCourseForm';
 import axios from 'axios';
 
 const CourseDetailPage = (props) => {
-  const [, token] = useAuth();
+  const [user, token] = useAuth();
   const { rqstRld } = props;
   const [courseDetails, setCourseDetails] = useState([]);
   const { id } = useParams();

@@ -42,6 +42,7 @@ function App() {
           Authorization: 'Bearer ' + token,
         },
       });
+      console.log('User: ', user);
       setCourses(response.data);
     } catch (error) {
       console.log(error.message);
@@ -69,7 +70,7 @@ function App() {
         },
       });
       setGoals(response.data);
-      console.log("Goal data: ", response.data)
+      console.log('Goal data: ', response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -105,7 +106,11 @@ function App() {
           path='/courses/'
           element={
             <PrivateRoute>
-              <CoursesMainPage courses={courses} rqstRld={rqstRld} />
+              <CoursesMainPage
+                user={user}
+                courses={courses}
+                rqstRld={rqstRld}
+              />
             </PrivateRoute>
           }
         />

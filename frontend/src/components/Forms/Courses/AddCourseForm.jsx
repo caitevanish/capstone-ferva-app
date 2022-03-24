@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
+import InputField from '../../InputField/InputField';
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 
-const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
+const AddCourseForm = ({ user, setModalIsOpen, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const customer = user.user_id;
   const [, token] = useAuth();
   const [newTitle, setNewTitle] = useState('');
   const [newCompany, setNewCompany] = useState('');
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newPurchaseType, setNewPurchaseType] = useState('');
+
+  const handleTitle = (event) => setNewTitle(event.target.value);
+  const handleCompany = (event) => setNewCompany(event.target.value);
+  const handlePurchaseDate = (event) => setNewPurchaseDate(event.target.value);
+  const handlePrice = (event) => setNewPrice(event.target.value);
+  const handlePurchaseType = (event) => setNewPurchaseType(event.target.value);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,9 +28,10 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
       price: newPrice,
       purchase_type: newPurchaseType,
       notes: '',
+      user: user.user_id,
     };
+    console.log(user);
     addCourse(newCourse);
-    //close modal? modal is open=false?
   }
 
   async function addCourse(course) {
@@ -55,7 +64,13 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
     <>
       <h2 className='form-header'>Add a New Course</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='course-title'>
+        <InputField
+          label='Course Title' //h3 styling
+          htmlFor='course-title'
+          value={newTitle}
+          onChange={handleTitle}
+        />
+        {/* <label htmlFor='course-title'>
           Course Title
           <input
             type='text'
@@ -63,8 +78,14 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
             value={newTitle}
             className='form-control'
           />
-        </label>
-        <label htmlFor='course-company'>
+        </label> */}
+        <InputField
+          label='Company' //h3 styling
+          htmlFor='course-company'
+          value={newCompany}
+          onChange={handleCompany}
+        />
+        {/* <label htmlFor='course-company'>
           Company
           <input
             type='text'
@@ -72,8 +93,15 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
             value={newCompany}
             className='form-control'
           />
-        </label>
-        <label htmlFor='course-purchaseDate'>
+        </label> */}
+        <InputField
+          label='Date of Purchase' //h3 styling
+          htmlFor='course-purchaseDate'
+          type='date'
+          value={newPurchaseDate}
+          onChange={handlePurchaseDate}
+        />
+        {/* <label htmlFor='course-purchaseDate'>
           Date of Purchase
           <input
             type='date'
@@ -81,8 +109,15 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
             value={newPurchaseDate}
             className='form-control'
           />
-        </label>
-        <label htmlFor='course-price'>
+        </label> */}
+        <InputField
+          label='Price' //h3 styling
+          htmlFor='course-price'
+          type='number'
+          value={parseInt(newPrice)}
+          onChange={handlePrice}
+        />
+        {/* <label htmlFor='course-price'>
           Price
           <input
             type='number'
@@ -90,8 +125,14 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
             value={parseInt(newPrice)}
             className='form-control'
           />
-        </label>
-        <label htmlFor='course-purchaseType'>
+        </label> */}
+        <InputField
+          label='Purchase Type' //h3 styling
+          htmlFor='course-purchaseType'
+          value={newPurchaseType}
+          onChange={handlePurchaseType}
+        />
+        {/* <label htmlFor='course-purchaseType'>
           Purchase Type
           <input
             type='text'
@@ -99,7 +140,7 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
             value={newPurchaseType}
             className='form-control'
           />
-        </label>
+        </label> */}
 
         <button onClick={() => setModalIsOpen(false)}>Close</button>
         <button type='submit'>Add Course</button>
