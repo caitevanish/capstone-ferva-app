@@ -19,9 +19,28 @@ class Project(models.Model):
   # goal_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE)
   has_milestones = models.BooleanField(default=False)
   # milestone_id = models.ForeignKey(blank=True, null=True, on_delete=models.CASCADE)
-  course = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
+  # course = models.ForeignKey(Course, blank=True, null=True, on_delete=models.CASCADE)
   notes = models.TextField(max_length=3000, null=True, blank=True)
   # images = models.CharField(max_length=1000)
 
   def __str__(self):
     return self.title
+
+
+class Milestone(models.Model):
+
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  title = models.CharField(max_length=100)
+  is_active = models.BooleanField(default=True)
+  project = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+
+
+class ProjectTimetable(models.Model):
+
+  #Make choices for category of projects (personal, professional, etc.)
+
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  date_logged = models.DateField(null=True, blank=True)
+  time_start = models.TimeField(auto_now=False, default=False, editable=True)
+  time_end = models.TimeField(auto_now=False, default=False, editable=True)
+  project = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)

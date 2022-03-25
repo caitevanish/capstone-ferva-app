@@ -13,5 +13,5 @@ class CourseSerializer(serializers.ModelSerializer):
   user = UserSerializer(many = False, read_only= True)
   class Meta:
     model = Course
-    fields = ['id', 'title', 'company', 'price', 'purchase_date', 'purchase_type', 'is_active', 'notes', 'user']
-    # depth = 1
+    fields = ['id', 'title', 'company', 'price', 'purchase_date', 'is_active', 'be_great', 'user', 'help_me_to']
+    depth = 1

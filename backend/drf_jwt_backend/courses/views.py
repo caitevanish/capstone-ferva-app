@@ -6,7 +6,14 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import Course
 from .serializers import CourseSerializer
 
+from django.apps import apps
+
 # Create your views here.
+
+
+def get_years(request, pk):
+  courses = Course.objects.get(pk=pk)
+  years_list = courses.filter(year=courses.course.purchase_date)
 
 
 #<<<<<<<<< GET / Retrieve >>>>>>>>>>
@@ -80,6 +87,20 @@ def delete_course(request, pk):
   course.delete()
   return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+#<<<<<<<<< Fetch Chart Data >>>>>>>>>>
+#         
+
+# @api_view([''])
+# @permission_classes([IsAuthenticated])
+# def yearly_courses(request, user_id):
+#   yearlyTotal = apps.get_model('courses.Course')
+
+#1. Get the year from the Purchase date column (x column label)
+#2. Add all of the prices together
+#3. Make the year with the highest amount be the max on the y-axis
+#4. Have the y-axis units be by 1000 dollars
+#5. 
 
 
 # <<<<<<<<<<<<<<<<< Notes <<<<<<<<<<<<<<<<<
