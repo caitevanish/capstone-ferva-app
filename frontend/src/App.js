@@ -25,6 +25,8 @@ import SideNavbar from './components/SideNavbar/SideNavbar';
 // Util Imports
 import PrivateRoute from './utils/PrivateRoute';
 import ReactModal from 'react-modal';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './themes/theme';
 
 ReactModal.setAppElement('#root');
 function App() {
@@ -106,75 +108,78 @@ function App() {
   //  }
 
   return (
-    <div>
-      <TopNavbar />
-      <SideNavbar />
-      <Routes>
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route
-          path='/'
-          element={
-            <PrivateRoute>
-              <HomePage user={user} token={token} courses={courses} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/courses/'
-          element={
-            <PrivateRoute>
-              <CoursesMainPage
-                user={user}
-                courses={courses}
-                rqstRld={rqstRld}
-              />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/course/:id/'
-          element={
-            <PrivateRoute>
-              <CourseDetailPage courses={courses} rqstRld={rqstRld} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/projects/'
-          element={
-            <PrivateRoute>
-              <ProjectsMainPage projects={projects} rqstRld={rqstRld} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/project/:id/'
-          element={
-            <PrivateRoute>
-              <ProjectDetailsPage projects={projects} rqstRld={rqstRld} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/goals/'
-          element={
-            <PrivateRoute>
-              <GoalsMainPage goals={goals} rqstRld={rqstRld} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/goal/:id/'
-          element={
-            <PrivateRoute>
-              <GoalDetailsPage goals={goals} rqstRld={rqstRld} />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-      <Footer />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div>
+        <TopNavbar />
+        <SideNavbar />
+        <Routes>
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route
+            path='/'
+            element={
+              <PrivateRoute>
+                <HomePage user={user} token={token} courses={courses} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/courses/'
+            element={
+              <PrivateRoute>
+                <CoursesMainPage
+                  user={user}
+                  courses={courses}
+                  rqstRld={rqstRld}
+                />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/course/:id/'
+            element={
+              <PrivateRoute>
+                <CourseDetailPage courses={courses} rqstRld={rqstRld} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/projects/'
+            element={
+              <PrivateRoute>
+                <ProjectsMainPage projects={projects} rqstRld={rqstRld} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/project/:id/'
+            element={
+              <PrivateRoute>
+                <ProjectDetailsPage projects={projects} rqstRld={rqstRld} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/goals/'
+            element={
+              <PrivateRoute>
+                <GoalsMainPage goals={goals} rqstRld={rqstRld} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/goal/:id/'
+            element={
+              <PrivateRoute>
+                <GoalDetailsPage goals={goals} rqstRld={rqstRld} />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

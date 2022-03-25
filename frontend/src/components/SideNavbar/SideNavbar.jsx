@@ -5,10 +5,12 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import './SideNavbar.css';
 
-import { Stack, Link, makeStyles } from '@mui/material';
+import { Stack, Link, makeStyles, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const SideNavbar = () => {
   const [user] = useAuth();
+  const navigate = useNavigate();
 
   // create all listed items into a sideNavbar-menu-link component and instantiate onto the page to practice DRY
 
@@ -33,20 +35,34 @@ const SideNavbar = () => {
             // className={classes.text}
             style={{ textDecoration: 'none', color: '#FFD6A7' }}
           >
-            <Link href='/' underline='none'>
-              {'Start Here'}
-            </Link>
-
-            <Link href='/courses/' underline='none'>
-              {'Courses'}
-            </Link>
-
-            <Link href='/projects/' underline='none'>
-              {'Projects'}
-            </Link>
-            <Link href='/goals/' underline='none'>
-              {'Goals'}
-            </Link>
+            <Button
+              onClick={() => {
+                navigate('/');
+              }}
+            >
+              Start Here
+            </Button>
+            <Button
+              onClick={() => {
+                navigate('/courses/');
+              }}
+            >
+              Courses
+            </Button>
+            <Button
+              onClick={() => {
+                navigate('/projects/');
+              }}
+            >
+              Projects
+            </Button>
+            <Button
+              onClick={() => {
+                navigate('/goals/');
+              }}
+            >
+              Goals
+            </Button>
           </Stack>
         )}
       </div>
