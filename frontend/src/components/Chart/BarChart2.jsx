@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { Chart as ChartJS, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {UserData} from './Data' //this is from youtube example
 
 ChartJS.register(BarElement);
 
-const BarChart = () => {
-  const [chart, setChart] = useState([]);
+//pass the data through chart component
+const BarChart = ({chartData}) => {
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.year),
+    datasets: [{
+      label: "Users Gained",
+      data: UserData.map((data) => data.userGain),
+
+    }]
+  });
+
+
+  function yearlyTotals(request):
 
   // var baseUrl = "https://"
 
   // async function fetchData() {
   //   try {
-  //     let response = await axios.filter('http://127.0.0.1:8000/api/projects/', {
+  //     let response = await axios.filter('http://127.0.0.1:8000/api/courses/', {
   //       headers: {
   //         Authorization: 'Bearer ' + token,
   //       },
@@ -27,10 +39,10 @@ const BarChart = () => {
   // }, []);
 
   var data = {
-    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'], //different years from the courses table
     datasets: [
       {
-        label: 'Yearly Purchases',
+        label: 'Yearly Investment',
         data: [600, 90, 200, 200, 1000, 1200, 200, 8000],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -67,26 +79,9 @@ const BarChart = () => {
     },
   };
   return (
-    // <div>
-    //   <Bar
-    //     data={{
-    //       labels: [''],
-    //       datasets: [
-    //         {
-    //           label: 'My First dataset',
-    //           backgroundColor: 'rgb(255, 99, 132)',
-    //           borderColor: 'rgb(255, 99, 132)',
-    //           data: [0, 10, 5, 2, 20, 30, 45],
-    //         },
-    //       ],
-    //     }}
-    //     height={400}
-    //     width={600}
-    //     options={{}}
-    //   />
-    // </div>
+
     <div>
-      <Bar data={data} height={400} options={options} />
+      <Bar data={chartData} height={400} options={options} />
     </div>
   );
 };

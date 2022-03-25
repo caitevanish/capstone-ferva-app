@@ -5,14 +5,20 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import './SideNavbar.css';
 
-import { Stack, Link } from '@mui/material';
+import { Stack, Link, makeStyles } from '@mui/material';
 
 const SideNavbar = () => {
   const [user] = useAuth();
 
   // create all listed items into a sideNavbar-menu-link component and instantiate onto the page to practice DRY
-   
 
+  // const useStyles = makeStyles({
+  //   text: {
+  //     color: 'ffd6a7',
+  //     // fontSize: '17px',
+  //   },
+  // });
+  // const classes = useStyles();
   return (
     <>
       <div className='sideNavbar'>
@@ -20,10 +26,11 @@ const SideNavbar = () => {
           <Stack
             direction={{ xs: 'column' }}
             alignItems='flex-start'
+            padding-top={10}
             justifyContent='center'
             spacing={2}
             gap={2}
-            className='text'
+            // className={classes.text}
             style={{ textDecoration: 'none', color: '#FFD6A7' }}
           >
             <Link href='/' underline='none'>

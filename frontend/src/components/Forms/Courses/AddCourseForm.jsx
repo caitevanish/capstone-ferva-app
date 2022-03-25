@@ -28,7 +28,6 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
       price: newPrice,
       purchase_type: newPurchaseType,
       notes: '',
-      user: user.user_id,
     };
     console.log(user);
     addCourse(newCourse);

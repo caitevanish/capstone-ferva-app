@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import CoursesTable from '../../components/CoursesTable/CoursesTable';
+// import CoursesTable from '../../components/CoursesTable/CoursesTable';
+import CoursesTable2 from '../../components/CoursesTable/CoursesTable2';
 import Modal from 'react-modal';
-import BarChart from '../../components/Chart/BarChart';
+// import BarChart from '../../components/Chart/BarChart';
 // import LineChart from '../../components/Chart/LineChart';
 
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
+import { useEffect } from 'react';
 
 const CoursesMainPage = (props) => {
   const { user, courses, rqstRld } = props;
@@ -15,19 +17,23 @@ const CoursesMainPage = (props) => {
   // const [courseDetails, setCourseDetails] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  //-----------To-Do:
-  //BUG FIX: As of now, when I switch to the course amin page i need to reload the screen to see the table filled with details. No good! Tried using the useEffect which calls setCourses, didn't work.
+  function getDatesList(courses) {
+    let datesList = [];
+    let dateData = courses.map((course) => course.purchase_date);
+    console.log(dateData);
+    return;
+  }
 
   // useEffect(() => {
-  //   // fetchCourses();
-  // }, []);
+  //   fetchChart();
+  // }, [courses]);
 
   //-----------To-Do:
 
   return (
     <div className='container'>
       <h1>Courses Main Page for {user.username}</h1>
-      <button onClick={() => setModalIsOpen(true)}>Add a Course</button>
+
       <Modal isOpen={modalIsOpen}>
         <AddCourseForm
           user={user}
@@ -35,13 +41,14 @@ const CoursesMainPage = (props) => {
           rqstRld={rqstRld}
         />
       </Modal>
-
-      <CoursesTable
+      <h2>My Courses</h2>
+      <button onClick={() => setModalIsOpen(true)}>Add a Course</button>
+      <CoursesTable2
         courses={courses}
         // setCourseDetails={setCourseDetails}
         token={token}
       />
-      <BarChart />
+      {/* <BarChart courses={courses} getDatesList={getDatesList} /> */}
     </div>
   );
 };

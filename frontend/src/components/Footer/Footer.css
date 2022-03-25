@@ -1,9 +1,12 @@
 footer {
+  background: #262626;
+  color: #d2d2d2;
   position: fixed;
   bottom: 0;
   font-size: 1.2rem;
   left: 0;
   padding: 1rem;
-  text-align: center;
+  padding-left: 3rem;
+  text-align: left;
   width: 100%;
 }

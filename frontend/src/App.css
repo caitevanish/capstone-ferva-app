@@ -8,6 +8,13 @@
   box-sizing: inherit;
 }
 
+h1 {
+  padding-top: 5rem;
+}
+
+h2 {
+  padding: 2rem;
+}
 html {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -18,13 +25,14 @@ p {
 }
 
 button {
-  /* background-color: transparent; */
+  background-color: #6aa9bc;
   border: 2px solid steelblue;
   color: #9b8a90;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
   padding: 0.5rem 0.5rem;
+
 }
 
 button:hover {
@@ -35,7 +43,7 @@ button:hover {
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
   overflow: auto;
   text-align: center;
 }

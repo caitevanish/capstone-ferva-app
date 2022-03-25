@@ -87,6 +87,24 @@ function App() {
     setRequestReload(!requestReload);
   };
 
+  //   async function fetchData() {
+  //     //setting up empty arrays to catch the response
+  //    try {
+  //      let response = await axios.get(`http://127.0.0.1:8000/api/courses/${user.user_id}` , {
+  //        headers: {
+  //          Authorization: 'Bearer ' + token,
+  //        },
+  //      });
+  //      year = response.data.date; //need to parse the year from the date
+  //      investments = response.data.date;
+
+  //      let setTotalCost(response.data.price);
+  //      setTotal(response.data.price);
+  //    } catch (error) {
+  //      console.log(error.message);
+  //    }
+  //  }
+
   return (
     <div>
       <TopNavbar />
