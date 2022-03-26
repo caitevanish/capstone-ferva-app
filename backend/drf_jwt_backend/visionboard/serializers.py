@@ -13,4 +13,4 @@ class CourseSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Visionboard
-    fields = ['id', 'title', 'url']
+    fields = ['id', 'title', 'image', 'user']
