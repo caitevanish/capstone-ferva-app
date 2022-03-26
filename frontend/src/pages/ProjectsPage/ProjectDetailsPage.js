@@ -4,8 +4,9 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import UpdateProjectForm from '../../components/Forms/Projects/UpdateProjectForm';
 import axios from 'axios';
+import VisionBoard2 from '../../components/VisionBoard/VisionBoard';
 
-const ProjectDetailPage = (props) => {
+const ProjectDetailsPage = (props) => {
   const [, token] = useAuth();
   const { rqstRld } = props;
   const { id } = useParams();
@@ -87,6 +88,8 @@ const ProjectDetailPage = (props) => {
         <p>{}</p> {/* Add great_if to model and migrate */}
       </div>
 
+      {/* <VisionBoard2 /> */}
+
       <button onClick={() => setModalIsOpen(true)}>Update</button>
       <Modal isOpen={modalIsOpen}>
         <UpdateProjectForm
@@ -107,4 +110,4 @@ const ProjectDetailPage = (props) => {
   );
 };
 
-export default ProjectDetailPage;
+export default ProjectDetailsPage;

@@ -16,7 +16,7 @@ from .serializers import ProjectSerializer, MilestoneSerializer, ProjectTimetabl
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_all_projects(request):
-  projects = Project.objects.filter(user_id=request.user.id)
+  projects = Project.objects.filter(user_id=request.user)
   serializer = ProjectSerializer(projects, many=True)
   return Response(serializer.data)
 
