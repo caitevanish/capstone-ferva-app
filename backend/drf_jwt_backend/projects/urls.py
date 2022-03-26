@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from projects import views
 
 app_name = "projects"
@@ -17,6 +17,8 @@ urlpatterns = [
 
   #delete project info
   path('<int:pk>/delete/', views.delete_project, name="project_delete"),  
+
+
 
   #Milestones
   path('ms/', views.view_all_milestones, name="milestones_all"),
