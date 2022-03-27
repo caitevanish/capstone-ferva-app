@@ -8,10 +8,29 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+// import * as React from 'react';
+// import { DataGrid } from '@mui/x-data-grid';
+// import { useDemoData } from '@mui/x-data-grid-generator';
 
 const GoalsTable = (props) => {
   const { goals } = props;
   const navigate = useNavigate();
+
+  // const VISIBLE_FIELDS = ['Title', 'Description', 'Start Date', 'Deadline'];
+
+  // export default function BasicExampleDataGrid() {
+  //   const { data } = useDemoData({
+  //     dataSet: 'Employee',
+  //     visibleFields: VISIBLE_FIELDS,
+  //     rowLength: 100,
+  //   });
+
+  //   return (
+  //     <div style={{ height: 400, width: '100%' }}>
+  //       <DataGrid {...data} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

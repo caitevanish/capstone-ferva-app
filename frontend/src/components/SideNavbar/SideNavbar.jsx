@@ -22,7 +22,7 @@ const SideNavbar = () => {
   // });
   // const classes = useStyles();
   return (
-    <>
+    <aside>
       <div className='sideNavbar'>
         {user && (
           <Stack
@@ -36,6 +36,7 @@ const SideNavbar = () => {
             style={{ textDecoration: 'none', color: '#FFD6A7' }}
           >
             <Button
+              color='tertiary'
               onClick={() => {
                 navigate('/');
               }}
@@ -43,6 +44,7 @@ const SideNavbar = () => {
               Start Here
             </Button>
             <Button
+              color='tertiary'
               onClick={() => {
                 navigate('/courses/');
               }}
@@ -50,6 +52,7 @@ const SideNavbar = () => {
               Courses
             </Button>
             <Button
+              color='tertiary'
               onClick={() => {
                 navigate('/projects/');
               }}
@@ -57,6 +60,7 @@ const SideNavbar = () => {
               Projects
             </Button>
             <Button
+              color='tertiary'
               onClick={() => {
                 navigate('/goals/');
               }}
@@ -66,7 +70,7 @@ const SideNavbar = () => {
           </Stack>
         )}
       </div>
-    </>
+    </aside>
   );
 };
 

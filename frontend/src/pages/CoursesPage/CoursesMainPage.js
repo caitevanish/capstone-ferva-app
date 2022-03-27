@@ -3,12 +3,12 @@ import { useState } from 'react';
 // import CoursesTable from '../../components/CoursesTable/CoursesTable';
 import CoursesTable2 from '../../components/CoursesTable/CoursesTable2';
 import Modal from 'react-modal';
-// import BarChart from '../../components/Chart/BarChart';
-// import LineChart from '../../components/Chart/LineChart';
+// import BarChart from '../../components/Chart/BarChart2';
 
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
-import { useEffect } from 'react';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const CoursesMainPage = (props) => {
   const { user, courses, rqstRld } = props;
@@ -31,9 +31,35 @@ const CoursesMainPage = (props) => {
   //-----------To-Do:
 
   return (
-    <div className='container'>
-      <h1>Courses Main Page for {user.username}</h1>
+    <div className='container-fluid'>
+      <div className='row'>
+        <h1>
+          Courses Main Page for <br></br>
+          {user.first_name}
+        </h1>
+      </div>
+      <div className='row'>
+        <div className='col-md-7'>
+          {/* <h2>My Courses</h2> */}
+          <div className='feature-5'>
+            <Button
+              color='secondary'
+              variant='contained'
+              onClick={() => setModalIsOpen(true)}
+            >
+              Add a Course
+            </Button>
 
+            <CoursesTable2 courses={courses} token={token} />
+          </div>
+        </div>
+        <div className='col-md-5'>
+          <h2>Online Investments Chart</h2>
+          <div className='feature-6'>{/* <BarChart2 /> */}</div>
+        </div>
+      </div>
+
+      <div></div>
       <Modal isOpen={modalIsOpen}>
         <AddCourseForm
           user={user}
@@ -41,13 +67,6 @@ const CoursesMainPage = (props) => {
           rqstRld={rqstRld}
         />
       </Modal>
-      <h2>My Courses</h2>
-      <button onClick={() => setModalIsOpen(true)}>Add a Course</button>
-      <CoursesTable2
-        courses={courses}
-        // setCourseDetails={setCourseDetails}
-        token={token}
-      />
       {/* <BarChart courses={courses} getDatesList={getDatesList} /> */}
     </div>
   );

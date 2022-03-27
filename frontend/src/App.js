@@ -110,7 +110,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
+      
         <TopNavbar />
         <SideNavbar />
         <Routes>
@@ -178,7 +178,7 @@ function App() {
           />
         </Routes>
         <Footer />
-      </div>
+      
     </ThemeProvider>
   );
 }

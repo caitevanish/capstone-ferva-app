@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { Chart as ChartJS, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import {UserData} from './Data' //this is from youtube example
+import { UserData } from './Data'; //this is from youtube example
 
 ChartJS.register(BarElement);
 
 //pass the data through chart component
-const BarChart = ({chartData}) => {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
-    datasets: [{
-      label: "Users Gained",
-      data: UserData.map((data) => data.userGain),
+const BarChart = ({ chartData }) => {
+  // const [userData, setUserData] = useState({
+  //   labels: UserData.map((data) => data.year),
+  //   datasets: [{
+  //     label: "Users Gained",
+  //     data: UserData.map((data) => data.userGain),
 
-    }]
-  });
+  //   }]
+  // });
 
-
-  function yearlyTotals(request):
+  // function yearlyTotals(request):
 
   // var baseUrl = "https://"
 
@@ -38,7 +37,7 @@ const BarChart = ({chartData}) => {
   //   const fetchData();
   // }, []);
 
-  var data = {
+  const data = {
     labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'], //different years from the courses table
     datasets: [
       {
@@ -78,8 +77,8 @@ const BarChart = ({chartData}) => {
       },
     },
   };
-  return (
 
+  return (
     <div>
       <Bar data={chartData} height={400} options={options} />
     </div>

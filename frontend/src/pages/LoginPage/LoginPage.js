@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
 import useCustomForm from '../../hooks/useCustomForm';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import '../../App.css';
 import './LoginPage.css';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
 
 const LoginPage = () => {
   const { loginUser, isServerError } = useContext(AuthContext);
@@ -20,6 +23,7 @@ const LoginPage = () => {
 
   return (
     <div className='container'>
+      <h1>Welcome to Ferva!</h1>
       <form className='form' onSubmit={handleSubmit}>
         <label>
           Username:{' '}
@@ -42,9 +46,14 @@ const LoginPage = () => {
         {isServerError ? (
           <p className='error'>Login failed, incorrect credentials!</p>
         ) : null}
-        {/* <Link to="/home">Click to register!</Link> */}
-        <Link to='/register'>Click to register!</Link>
-        <button>Login!</button>
+
+        {/* <Link to='/register'>Click to register!</Link> */}
+        <Link href='/register' component='button'>
+          Click to register!
+        </Link>
+        <Button color='tertiary' variant='contained'>
+          Login!
+        </Button>
       </form>
     </div>
   );

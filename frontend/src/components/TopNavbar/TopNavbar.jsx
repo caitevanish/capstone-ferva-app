@@ -9,21 +9,23 @@ const TopNavbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='topNavbar'>
-      <ul>
-        <li className='brand'>
-          <Link to='/' style={{ textDecoration: 'none', color: '#FFD6A7' }}>
-            <b>FERVA</b>
-          </Link>
-        </li>
-        <li>
-          {user ? (
-            <button onClick={logoutUser}>Logout</button>
-          ) : (
-            <button onClick={() => navigate('/login')}>Login</button>
-          )}
-        </li>
-      </ul>
+    <div className='site-container'>
+      <div className='topNavbar'>
+        <ul>
+          <li className='brand'>
+            <Link to='/' style={{ textDecoration: 'none', color: '#FFD6A7' }}>
+              <b>FERVA</b>
+            </Link>
+          </li>
+          <li>
+            {user ? (
+              <button onClick={logoutUser}>Logout</button>
+            ) : (
+              <button onClick={() => navigate('/login')}>Login</button>
+            )}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

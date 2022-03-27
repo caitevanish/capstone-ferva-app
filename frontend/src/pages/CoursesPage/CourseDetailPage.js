@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import UpdateCourseForm from '../../components/Forms/Courses/UpdateCourseForm';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 
 const CourseDetailPage = (props) => {
   const [user, token] = useAuth();
@@ -61,36 +62,65 @@ const CourseDetailPage = (props) => {
   }
 
   return (
-    <div className='container'>
+    <div className='container-fluid'>
       <Link to={'/courses/'} className='button'>
         Back to Courses
       </Link>
-      <h1>Details for {courseDetails.title} Course</h1>
       <div className='row'>
-        <h3>Course:</h3>
-        <p>{courseDetails.title}</p>
-        <h3>Company:</h3>
-        <p>{courseDetails.company}</p>
-        <h3>Purchase Date:</h3>
-        <p>{courseDetails.purchase_date}</p>
+        <h1>Details for {courseDetails.title} Course</h1>
       </div>
       <div className='row'>
-        <h3>Price:</h3>
-        <p>{courseDetails.price}</p>
-        <h3>Payment Type:</h3>
-        <p>{courseDetails.purchase_type}</p>
+        <div className='col-md-6'>
+          <div className='details-left'>
+            <div className='row'>
+              <h4>Course:</h4>
+              <p>{courseDetails.title}</p>
+            </div>
+            <div className='row'></div>
+            <h4>Company:</h4>
+            <p>{courseDetails.company}</p>
+            <div className='row'>
+              <h4>Purchase Date:</h4>
+            </div>
+            <p>{courseDetails.purchase_date}</p>
+            <h4>I want to finish this course by:</h4>
+            <p>{courseDetails.deadline_date}</p>
+            <h4>Price:</h4>
+            <p>{courseDetails.price}</p>
+          </div>
+        </div>
+        <div className='col-md-4'>
+          <div className='details-right'>
+            <div className='row'>
+              <h4>By completing this course, wouldn't it be great if...</h4>
+              <p>{}</p> {/* Add great_if to model and migrate */}
+              {/* Add edit course button */}
+            </div>
+            <div className='row'>
+              <h4>This course will help me by...</h4>
+              <p>{}</p> {/* Add help_me_to to model and migrate */}
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>I want to finish this course by:</h3>
-      <p>{courseDetails.deadline_date}</p>{' '}
-      {/* Add deadline_date to model and migrate */}
-      <div className='col-1'>
-        <h3>This course will help me by...</h3>
-        <p>{}</p> {/* Add help_me_to to model and migrate */}
+      <div className='details-buttons'>
+        <Button
+          className='detail-btn'
+          color='warning'
+          variant='outlined'
+          onClick={(event) => handleDelete(event, courseDetails.id)}
+        >
+          Delete
+        </Button>
+        <Button
+          className='detail-btn'
+          color='success'
+          variant='contained'
+          onClick={() => setModalIsOpen(true)}
+        >
+          Update
+        </Button>
       </div>
-      <h3>By completing this course, wouldn't it be great if...</h3>
-      <p>{}</p> {/* Add great_if to model and migrate */}
-      {/* Add edit course button */}
-      <button onClick={() => setModalIsOpen(true)}>Update</button>
       <Modal isOpen={modalIsOpen}>
         <UpdateCourseForm
           setModalIsOpen={setModalIsOpen}
@@ -100,14 +130,22 @@ const CourseDetailPage = (props) => {
           rqstRld={rqstRld}
         />
       </Modal>
-      <button
+      {/* <Button variant='contained'>Delete</Button> */}
+      {/* <button
         onClick={(event) => handleDelete(event, courseDetails.id)}
         className='btn-danger'
       >
         Delete
-      </button>
+      </button>\
+      
+      <button onClick={() => setModalIsOpen(true)}>Update</button>*/}
     </div>
   );
 };
 
 export default CourseDetailPage;
+
+{
+  /* <h3>Payment Type:</h3>
+<p>{courseDetails.purchase_type}</p> */
+}

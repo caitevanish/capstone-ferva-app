@@ -1,3 +1,6 @@
+.button {
+  padding: 2rem;
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 *,
@@ -10,21 +13,11 @@
 
 h1 {
   padding-top: 5rem;
-  padding-bottom: 2.5rem;
-  text-align: center;
 }
 
 h2 {
-  padding-top: 1rem;
   padding: 2rem;
-  text-align: center;
 }
-
-h3 {
-  padding: 2rem;
-  text-align: center;
-}
-
 html {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -59,11 +52,11 @@ button:hover {
 }
 
 .container-pages {
-  margin-left: 15rem;
+  margin: 0 auto;
   margin-top: 5;
   max-width: 700px;
   overflow: auto;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .form {
@@ -81,44 +74,4 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
-}
-
-.site-container {
-  height: 100%;
-}
-
-.feature-1 {
-  text-align: center;
-}
-.feature-5 {
-  text-align: left;
-  padding: 2rem;
-  margin-left: 15rem;
-}
-
-.dash-left {
-  padding: 2rem;
-  padding-left: 4rem;
-}
-.dash-right {
-  padding: 2rem;
-}
-.border {
-  background: red;
-}
-
-.details-left {
-  text-align: left;
-  padding: 2rem;
-  margin-left: 15rem;
-}
-.details-right {
-  text-align: left;
-  padding: 2rem;
-}
-.details-buttons {
-  text-align: center;
-}
-.detail-btn {
-  margin-left: 1rem;
 }

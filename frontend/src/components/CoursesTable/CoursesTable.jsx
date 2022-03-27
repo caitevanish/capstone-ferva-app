@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
+
 const CoursesTable = (props) => {
   const { courses } = props;
   // const [user, token] = useAuth();
@@ -35,10 +36,17 @@ const CoursesTable = (props) => {
                   <td>{course.purchase_date}</td>
                   <td>{course.price}</td>
                   <td>
-                    <Link to={`/course/${course.id}/`} className='button'>
+                    <Button
+                      onClick={() => {
+                        navigate(`/course/${course.id}/`);
+                      }}
+                    >
+                      Details
+                    </Button>
+                    {/* <Link to={`/course/${course.id}/`} className='button'>
                       Details
                     </Link>
-                    <Outlet></Outlet>
+                    <Outlet></Outlet> */}
                   </td>
                 </tr>
               );

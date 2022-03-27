@@ -7,9 +7,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const CoursesTable = (props) => {
   const { courses } = props;
+  const navigate = useNavigate();
   // const [user, token] = useAuth();
   // const [courseTable, setCoursesTable] = useState([]);
 
@@ -46,10 +49,14 @@ const CoursesTable = (props) => {
                   <TableCell align='right'>{course.purchase_date}</TableCell>
                   <TableCell align='right'>{course.price}</TableCell>
                   <TableCell align='right'>
-                    <Link to={`/course/${course.id}/`} className='button'>
+                    <Button
+                      color='secondary'
+                      onClick={() => {
+                        navigate(`/course/${course.id}/`);
+                      }}
+                    >
                       Details
-                    </Link>
-                    <Outlet></Outlet>
+                    </Button>
                   </TableCell>
                 </TableRow>
               );
