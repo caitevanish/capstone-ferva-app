@@ -15,10 +15,11 @@ const ProjectsMainPage = (props) => {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <h1>Projects Main Page for {user.first_name}</h1>
+        <h1>Projects Main Page</h1>
       </div>
       <div className='row'>
         <div className='col-md-7'>
+        <h2>Project column 2</h2>
           <div className='feature-5'>
             <Button
               color='secondary'

@@ -33,10 +33,7 @@ const CoursesMainPage = (props) => {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <h1>
-          Courses Main Page for <br></br>
-          {user.first_name}
-        </h1>
+        <h1>Courses Main Page</h1>
       </div>
       <div className='row'>
         <div className='col-md-7'>

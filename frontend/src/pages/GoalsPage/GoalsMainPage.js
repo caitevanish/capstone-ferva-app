@@ -16,10 +16,11 @@ const GoalsMainPage = (props) => {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <h1>Goals Main Page for {user.username}</h1>
+        <h1>Goals Main Page</h1>
       </div>
       <div className='row'>
         <div className='col-md-7'>
+          <h3>Short Term Goals</h3>
           <div className='feature-5'>
             <Button
               color='secondary'
@@ -32,8 +33,17 @@ const GoalsMainPage = (props) => {
           </div>
         </div>
         <div className='col-md-5'>
-          <h2>Goal column 2</h2>
-          <div className='feature-6'>{/* <component /> */}</div>
+          <h3>Long Term Goals</h3>
+          <div className='feature-6'>
+            <Button
+              color='secondary'
+              variant='contained'
+              onClick={() => setModalIsOpen(true)}
+            >
+              Add a Goal
+            </Button>
+            <GoalsTable goals={goals} />
+          </div>
         </div>
       </div>
 
