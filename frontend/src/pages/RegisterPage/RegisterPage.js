@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import useCustomForm from '../../hooks/useCustomForm';
+import Button from '@mui/material/Button';
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
@@ -15,6 +16,8 @@ const RegisterPage = () => {
     defaultValues,
     registerUser
   );
+
+  console.log(formData);
 
   return (
     <div className='container'>
@@ -68,7 +71,9 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
-        <button>Register!</button>
+        <Button type='submit' color='tertiary' variant='contained'>
+          Register!
+        </Button>
       </form>
     </div>
   );

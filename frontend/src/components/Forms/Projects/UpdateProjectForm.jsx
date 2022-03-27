@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 import InputField from '../../InputField/InputField';
 import Button from '@mui/material/Button';
+import { Stack } from '@mui/material';
 
 const UpdateProjectForm = (props) => {
   const { setModalIsOpen, projectDetails, dtlRld, rqstRld } = props;
@@ -65,56 +66,59 @@ const UpdateProjectForm = (props) => {
     <div className='form-container'>
       <h2 className='form-header'>Update your project details</h2>
       <form onSubmit={handleSubmit}>
-        <InputField
-          label='Project Title' //h3 styling
-          htmlFor='project-title'
-          value={editTitle}
-          onChange={handleTitle}
-        />
-        <InputField
-          label='Description'
-          htmlFor='project-description'
-          value={editDescription}
-          onChange={handleDescription}
-        />
-        <InputField
-          label='Start Date'
-          htmlFor='project-start'
-          value={editStartDate}
-          onChange={handleStartDate}
-          type='date'
-        />
-        <InputField
-          label='Deadline'
-          htmlFor='project-deadline'
-          value={editDeadlineDate}
-          onChange={handleDeadlineDate}
-          type='date'
-        />
-        <InputField
-          label="By completing this project, wouldn't it be great if..."
-          htmlFor='project-beGreatIf'
-          value={editBeGreatIf}
-          onChange={handleBeGreatIf}
-        />
-
-        <Button
-          className='detail-btn'
-          color='primary'
-          variant='contained'
-          onClick={() => setModalIsOpen(false)}
-        >
-          Close
-        </Button>
-        <Button
-          type='submit'
-          className='detail-btn'
-          color='success'
-          variant='contained'
-          onClick={() => setModalIsOpen(true)}
-        >
-          Update
-        </Button>
+        <Stack spacing={2}>
+          <InputField
+            label='Project Title' //h3 styling
+            htmlFor='project-title'
+            value={editTitle}
+            onChange={handleTitle}
+          />
+          <InputField
+            label='Description'
+            htmlFor='project-description'
+            value={editDescription}
+            onChange={handleDescription}
+          />
+          <InputField
+            label='Start Date'
+            htmlFor='project-start'
+            value={editStartDate}
+            onChange={handleStartDate}
+            type='date'
+          />
+          <InputField
+            label='Deadline'
+            htmlFor='project-deadline'
+            value={editDeadlineDate}
+            onChange={handleDeadlineDate}
+            type='date'
+          />
+          <InputField
+            label="By completing this project, wouldn't it be great if..."
+            htmlFor='project-beGreatIf'
+            value={editBeGreatIf}
+            onChange={handleBeGreatIf}
+          />
+          <Stack direction='row' spacing={2} justifyContent='center'>
+            <Button
+              className='detail-btn'
+              color='primary'
+              variant='contained'
+              onClick={() => setModalIsOpen(false)}
+            >
+              Close
+            </Button>
+            <Button
+              type='submit'
+              className='detail-btn'
+              color='success'
+              variant='contained'
+              onClick={() => setModalIsOpen(true)}
+            >
+              Update
+            </Button>
+          </Stack>
+        </Stack>
       </form>
     </div>
   );

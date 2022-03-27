@@ -19,22 +19,8 @@ const GoalsMainPage = (props) => {
         <h1>Goals Main Page</h1>
       </div>
       <div className='row'>
-        <div className='col-md-7'>
-          <h3>Short Term Goals</h3>
+        <div className='col-md-10'>
           <div className='feature-5'>
-            <Button
-              color='secondary'
-              variant='contained'
-              onClick={() => setModalIsOpen(true)}
-            >
-              Add a Goal
-            </Button>
-            <GoalsTable goals={goals} />
-          </div>
-        </div>
-        <div className='col-md-5'>
-          <h3>Long Term Goals</h3>
-          <div className='feature-6'>
             <Button
               color='secondary'
               variant='contained'
@@ -55,3 +41,25 @@ const GoalsMainPage = (props) => {
 };
 
 export default GoalsMainPage;
+
+{
+  /* <div className='row'>
+  <div className='col-md-7'>
+    <h3>Short Term Goals</h3>
+    <div className='feature-5'>
+      <Button
+        color='secondary'
+        variant='contained'
+        onClick={() => setModalIsOpen(true)}
+      >
+        Add a Goal
+      </Button>
+      <GoalsTable goals={goals} />
+    </div>
+  </div>
+  <div className='col-md-5'>
+    <h3>Long Term Goals</h3>
+    <div className='feature-6'></div>
+  </div>
+</div> */
+}

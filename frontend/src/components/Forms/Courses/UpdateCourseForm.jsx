@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import InputField from '../../InputField/InputField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Stack } from '@mui/material';
 
 const UpdateCourseForm = (props) => {
   const { setModalIsOpen, courseDetails, dtlRld, rqstRld } = props;
@@ -73,7 +74,8 @@ const UpdateCourseForm = (props) => {
     <div className='form-container'>
       <h2 className='form-header'>Update your course information</h2>
       <form onSubmit={handleSubmit}>
-        {/* <label for='update-title'>
+        <Stack spacing={2}>
+          {/* <label for='update-title'>
           Course Title
           <input
             type='text'
@@ -84,14 +86,14 @@ const UpdateCourseForm = (props) => {
           /> 
           </label>*/}
 
-        <InputField
-          label='Course Title' //h3 styling
-          htmlFor='course-title'
-          value={editTitle}
-          onChange={handleTitle}
-        />
+          <InputField
+            label='Course Title' //h3 styling
+            htmlFor='course-title'
+            value={editTitle}
+            onChange={handleTitle}
+          />
 
-        {/* <label for='update-company'>
+          {/* <label for='update-company'>
           Company
           <input
             type='text'
@@ -102,14 +104,14 @@ const UpdateCourseForm = (props) => {
           />
         </label> */}
 
-        <InputField
-          label='Company' //h3 styling
-          htmlFor='course-company'
-          value={editCompany}
-          onChange={handleCompany}
-        />
+          <InputField
+            label='Company' //h3 styling
+            htmlFor='course-company'
+            value={editCompany}
+            onChange={handleCompany}
+          />
 
-        {/* <label for='update-purchaseDate'>
+          {/* <label for='update-purchaseDate'>
           Date of Purchase
           <input
             type='date'
@@ -120,15 +122,15 @@ const UpdateCourseForm = (props) => {
           />
         </label> */}
 
-        <InputField
-          label='Date of Purchase' //h3 styling
-          htmlFor='course-purchaseDate'
-          type='date'
-          value={editPurchaseDate}
-          onChange={handlePurchaseDate}
-        />
+          <InputField
+            label='Date of Purchase' //h3 styling
+            htmlFor='course-purchaseDate'
+            type='date'
+            value={editPurchaseDate}
+            onChange={handlePurchaseDate}
+          />
 
-        {/* <label for='update-coursePrice'>
+          {/* <label for='update-coursePrice'>
           Price
           <input
             type='number'
@@ -139,15 +141,15 @@ const UpdateCourseForm = (props) => {
           />
         </label> */}
 
-        <InputField
-          label='Price' //h3 styling
-          htmlFor='course-price'
-          type='number'
-          value={parseInt(editPrice)}
-          onChange={handlePrice}
-        />
+          <InputField
+            label='Price' //h3 styling
+            htmlFor='course-price'
+            type='number'
+            value={parseInt(editPrice)}
+            onChange={handlePrice}
+          />
 
-        {/* <label for='update-purchaseType'>
+          {/* <label for='update-purchaseType'>
           Purchase Type
           <input
             type='text'
@@ -158,37 +160,39 @@ const UpdateCourseForm = (props) => {
           />
         </label> */}
 
-        <InputField
-          label="By completing this course, wouldn't it be great if..." //h3 styling
-          htmlFor='course-beGreatIf'
-          value={editBeGreatIf}
-          onChange={handleBeGreatIf}
-        />
+          <InputField
+            label="By completing this course, wouldn't it be great if..." //h3 styling
+            htmlFor='course-beGreatIf'
+            value={editBeGreatIf}
+            onChange={handleBeGreatIf}
+          />
 
-        <InputField
-          label='This course will help me by...' //h3 styling
-          htmlFor='course-helpMeTo'
-          value={editHelpMeTo}
-          onChange={handleHelpMeTo}
-        />
-
-        <Button
-          className='detail-btn'
-          color='primary'
-          variant='contained'
-          onClick={() => setModalIsOpen(false)}
-        >
-          Close
-        </Button>
-        <Button
-          type='submit'
-          className='detail-btn'
-          color='success'
-          variant='contained'
-          onClick={() => setModalIsOpen(true)}
-        >
-          Update
-        </Button>
+          <InputField
+            label='This course will help me by...' //h3 styling
+            htmlFor='course-helpMeTo'
+            value={editHelpMeTo}
+            onChange={handleHelpMeTo}
+          />
+          <Stack direction='row' spacing={2} justifyContent='center'>
+            <Button
+              className='detail-btn'
+              color='primary'
+              variant='contained'
+              onClick={() => setModalIsOpen(false)}
+            >
+              Close
+            </Button>
+            <Button
+              type='submit'
+              className='detail-btn'
+              color='success'
+              variant='contained'
+              onClick={() => setModalIsOpen(true)}
+            >
+              Update
+            </Button>
+          </Stack>
+        </Stack>
       </form>
     </div>
   );

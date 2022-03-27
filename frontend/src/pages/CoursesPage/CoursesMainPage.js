@@ -39,6 +39,7 @@ const CoursesMainPage = (props) => {
         <div className='col-md-7'>
           {/* <h2>My Courses</h2> */}
           <div className='feature-5'>
+         
             <Button
               color='secondary'
               variant='contained'

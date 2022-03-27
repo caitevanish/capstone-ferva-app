@@ -5,6 +5,7 @@ import useCustomForm from '../../hooks/useCustomForm';
 import '../../App.css';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
 
 const LoginPage = () => {
   const { loginUser, isServerError } = useContext(AuthContext);
@@ -24,24 +25,22 @@ const LoginPage = () => {
     <div className='container'>
       <h1>Welcome to Ferva!</h1>
       <form className='form' onSubmit={handleSubmit}>
-        <label>
-          Username:{' '}
-          <input
-            type='text'
-            name='username'
-            value={formData.username}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Password:{' '}
-          <input
-            type='text'
-            name='password'
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-        </label>
+        <TextField
+          label='Username'
+          type='text'
+          name='username'
+          value={formData.username}
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          label='Password'
+          type='password'
+          name='password'
+          value={formData.password}
+          onChange={handleInputChange}
+        />
+
         {isServerError ? (
           <p className='error'>Login failed, incorrect credentials!</p>
         ) : null}
@@ -50,7 +49,7 @@ const LoginPage = () => {
         <Link href='/register' component='button'>
           Click to register!
         </Link>
-        <Button color='tertiary' variant='contained'>
+        <Button type='submit' color='tertiary' variant='contained'>
           Login!
         </Button>
       </form>

@@ -3,6 +3,8 @@ import InputField from '../../InputField/InputField';
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { Stack } from '@mui/material';
 
 const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -69,72 +71,76 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
     <div className='form-container'>
       <h2 className='form-header'>Add a New Course</h2>
       <form onSubmit={handleSubmit}>
-        <InputField
-          label='Course Title' //h3 styling
-          htmlFor='course-title'
-          value={newTitle}
-          onChange={handleTitle}
-        />
+        <Stack spacing={2}>
+          <InputField
+            label='Course Title' //h3 styling
+            htmlFor='course-title'
+            value={newTitle}
+            onChange={handleTitle}
+          />
 
-        <InputField
-          label='Company' //h3 styling
-          htmlFor='course-company'
-          value={newCompany}
-          onChange={handleCompany}
-        />
+          <InputField
+            label='Company' //h3 styling
+            htmlFor='course-company'
+            value={newCompany}
+            onChange={handleCompany}
+          />
 
-        <InputField
-          label='Date of Purchase' //h3 styling
-          htmlFor='course-purchaseDate'
-          type='date'
-          value={newPurchaseDate}
-          onChange={handlePurchaseDate}
-        />
+          <InputField
+            label='Date of Purchase' //h3 styling
+            htmlFor='course-purchaseDate'
+            type='date'
+            value={newPurchaseDate}
+            onChange={handlePurchaseDate}
+          />
 
-        <InputField
-          label='Price' //h3 styling
-          htmlFor='course-price'
-          type='number'
-          value={parseInt(newPrice)}
-          onChange={handlePrice}
-        />
+          <InputField
+            label='Price' //h3 styling
+            htmlFor='course-price'
+            type='number'
+            value={parseInt(newPrice)}
+            onChange={handlePrice}
+          />
 
-        {/* <InputField
+          {/* <InputField
           label='Purchase Type' //h3 styling
           htmlFor='course-purchaseType'
           value={newPurchaseType}
           onChange={handlePurchaseType}
         /> */}
-        <InputField
-          label="By completing this course, wouldn't it be great if..." //h3 styling
-          htmlFor='course-beGreatIf'
-          value={newBeGreatIf}
-          onChange={handleBeGreatIf}
-        />
-        <InputField
-          label='This course will help me by...' //h3 styling
-          htmlFor='course-helpMeTo'
-          value={newHelpMeTo}
-          onChange={handleHelpMeTo}
-        />
+          <InputField
+            label="By completing this course, wouldn't it be great if..." //h3 styling
+            htmlFor='course-beGreatIf'
+            value={newBeGreatIf}
+            onChange={handleBeGreatIf}
+          />
+          <InputField
+            label='This course will help me by...' //h3 styling
+            htmlFor='course-helpMeTo'
+            value={newHelpMeTo}
+            onChange={handleHelpMeTo}
+          />
+          <Stack direction='row' spacing={2} justifyContent='center'>
+            <Button
+              // className='detail-btn'
+              color='primary'
+              variant='contained'
+              onClick={() => setModalIsOpen(false)}
+            >
+              Close
+            </Button>
 
-        <Button
-          className='detail-btn'
-          color='primary'
-          variant='contained'
-          onClick={() => setModalIsOpen(false)}
-        >
-          Close
-        </Button>
-
-        <Button
-          type='submit'
-          className='detail-btn'
-          color='success'
-          variant='contained'
-        >
-          Add Course
-        </Button>
+            <Button
+              fullWidth
+              type='submit'
+              // className='detail-btn'
+              color='success'
+              variant='contained'
+            >
+              Add Course
+            </Button>
+          </Stack>
+        </Stack>
       </form>
     </div>
   );

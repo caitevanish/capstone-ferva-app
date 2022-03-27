@@ -68,8 +68,9 @@ button:hover {
 
 .container-pages {
   margin-left: 15rem;
+  margin-right: 15rem;
   margin-top: 5;
-  max-width: 700px;
+  max-width: 400px;
   overflow: auto;
   /* text-align: center; */
 }

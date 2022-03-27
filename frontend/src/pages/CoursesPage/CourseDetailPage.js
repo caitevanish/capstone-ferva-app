@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import UpdateCourseForm from '../../components/Forms/Courses/UpdateCourseForm';
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import { Stack } from '@mui/material';
 
 const CourseDetailPage = (props) => {
   const [user, token] = useAuth();
@@ -104,22 +105,24 @@ const CourseDetailPage = (props) => {
         </div>
       </div>
       <div className='details-buttons'>
-        <Button
-          className='detail-btn'
-          color='warning'
-          variant='outlined'
-          onClick={(event) => handleDelete(event, courseDetails.id)}
-        >
-          Delete
-        </Button>
-        <Button
-          className='detail-btn'
-          color='success'
-          variant='contained'
-          onClick={() => setModalIsOpen(true)}
-        >
-          Update
-        </Button>
+        <Stack direction='row' spacing={2} justifyContent='center'>
+          <Button
+            className='detail-btn'
+            color='warning'
+            variant='outlined'
+            onClick={(event) => handleDelete(event, courseDetails.id)}
+          >
+            Delete
+          </Button>
+          <Button
+            className='detail-btn'
+            color='success'
+            variant='contained'
+            onClick={() => setModalIsOpen(true)}
+          >
+            Update
+          </Button>
+        </Stack>
       </div>
       <Modal isOpen={modalIsOpen}>
         <UpdateCourseForm
