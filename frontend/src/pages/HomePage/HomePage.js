@@ -19,17 +19,15 @@ const HomePage = ({ user, token }) => {
         <div className='row'>
           <StudyTracker />
         </div>
-
-        <div className='row'>
+        {/* <div className='row'>
           <DeadlineTable />
-        </div>
-        <div className='row'>
+        </div>{' '} */}
+        {/* <div className='row'>
           <div className='col-md-6'>
             <div className='dash-left'>
               <h3>
                 Feature here: <br></br>Top 3 courses table
               </h3>
-              {/* Top 3 Courses Table */}
             </div>
           </div>
           <div className='col-md-6'>
@@ -37,10 +35,9 @@ const HomePage = ({ user, token }) => {
               <h3>
                 Feature here: <br></br>Top 3 courses table
               </h3>
-              {/* Top 3 Projects Table */}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

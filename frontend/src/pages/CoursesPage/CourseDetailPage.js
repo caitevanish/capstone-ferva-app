@@ -63,9 +63,9 @@ const CourseDetailPage = (props) => {
 
   return (
     <div className='container-fluid'>
-      <Link to={'/courses/'} className='button'>
+      {/* <Link to={'/courses/'} className='button'>
         Back to Courses
-      </Link>
+      </Link> */}
       <div className='row'>
         <h1>Details for {courseDetails.title} Course</h1>
       </div>
@@ -94,12 +94,11 @@ const CourseDetailPage = (props) => {
           <div className='details-right'>
             <div className='row'>
               <h4>By completing this course, wouldn't it be great if...</h4>
-              <p>{}</p> {/* Add great_if to model and migrate */}
-              {/* Add edit course button */}
+              <p>{courseDetails.be_great}</p>
             </div>
             <div className='row'>
               <h4>This course will help me by...</h4>
-              <p>{}</p> {/* Add help_me_to to model and migrate */}
+              <p>{courseDetails.help_me_to}</p>
             </div>
           </div>
         </div>

@@ -12,13 +12,17 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
   const [newCompany, setNewCompany] = useState('');
   const [newPurchaseDate, setNewPurchaseDate] = useState('');
   const [newPrice, setNewPrice] = useState('');
-  const [newPurchaseType, setNewPurchaseType] = useState('');
+  // const [newPurchaseType, setNewPurchaseType] = useState('');
+  const [newBeGreatIf, setNewBeGreatIf] = useState('');
+  const [newHelpMeTo, setNewHelpMeTo] = useState('');
 
   const handleTitle = (event) => setNewTitle(event.target.value);
   const handleCompany = (event) => setNewCompany(event.target.value);
   const handlePurchaseDate = (event) => setNewPurchaseDate(event.target.value);
   const handlePrice = (event) => setNewPrice(event.target.value);
-  const handlePurchaseType = (event) => setNewPurchaseType(event.target.value);
+  // const handlePurchaseType = (event) => setNewPurchaseType(event.target.value);
+  const handleBeGreatIf = (event) => setNewBeGreatIf(event.target.value);
+  const handleHelpMeTo = (event) => setNewHelpMeTo(event.target.value);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -27,8 +31,9 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
       company: newCompany,
       purchase_date: newPurchaseDate,
       price: newPrice,
-      purchase_type: newPurchaseType,
-      notes: '',
+      // purchase_type: newPurchaseType,
+      be_great: newBeGreatIf,
+      help_me_to: newHelpMeTo,
     };
     console.log(user);
     addCourse(newCourse);
@@ -61,7 +66,7 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
   }
 
   return (
-    <div className='container'>
+    <div className='form-container'>
       <h2 className='form-header'>Add a New Course</h2>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -94,11 +99,23 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
           onChange={handlePrice}
         />
 
-        <InputField
+        {/* <InputField
           label='Purchase Type' //h3 styling
           htmlFor='course-purchaseType'
           value={newPurchaseType}
           onChange={handlePurchaseType}
+        /> */}
+        <InputField
+          label="By completing this course, wouldn't it be great if..." //h3 styling
+          htmlFor='course-beGreatIf'
+          value={newBeGreatIf}
+          onChange={handleBeGreatIf}
+        />
+        <InputField
+          label='This course will help me by...' //h3 styling
+          htmlFor='course-helpMeTo'
+          value={newHelpMeTo}
+          onChange={handleHelpMeTo}
         />
 
         <Button
@@ -115,7 +132,6 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
           className='detail-btn'
           color='success'
           variant='contained'
-          onClick={() => setModalIsOpen(true)}
         >
           Add Course
         </Button>

@@ -64,9 +64,9 @@ const ProjectDetailsPage = (props) => {
 
   return (
     <div className='container-fluid'>
-      <Link to={'/projects/'} className='button'>
+      {/* <Link to={'/projects/'} className='button'>
         Back to Projects
-      </Link>
+      </Link> */}
       <div className='row'>
         <h1>Details for {projectDetails.title} Project</h1>
       </div>
@@ -108,7 +108,7 @@ const ProjectDetailsPage = (props) => {
             </div>
             <div className='row'>
               <h4>By completing this project, wouldn't it be great if...</h4>
-              <p>{/* <Great if text space /> */}</p>
+              <p>{projectDetails.notes}</p>
             </div>
           </div>
         </div>

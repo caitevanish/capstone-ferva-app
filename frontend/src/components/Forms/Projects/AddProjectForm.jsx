@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InputField from '../../InputField/InputField';
+import Button from '@mui/material/Button';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 
@@ -10,11 +11,13 @@ const AddProjectForm = (props) => {
   const [newDescription, setNewDescription] = useState('');
   const [newStartDate, setNewStartDate] = useState('');
   const [newDeadlineDate, setNewDeadlineDate] = useState('');
+  const [newBeGreatIf, setNewBeGreatIf] = useState('');
 
   const handleTitle = (event) => setNewTitle(event.target.value);
   const handleDescription = (event) => setNewDescription(event.target.value);
   const handleStartDate = (event) => setNewStartDate(event.target.value);
   const handleDeadlineDate = (event) => setNewDeadlineDate(event.target.value);
+  const handleBeGreatIf = (event) => setNewBeGreatIf(event.target.value);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +26,7 @@ const AddProjectForm = (props) => {
       description: newDescription,
       start_date: newStartDate,
       deadline_date: newDeadlineDate,
-      notes: '',
+      notes: newBeGreatIf,
     };
     addProject(newProject);
   }
@@ -53,7 +56,7 @@ const AddProjectForm = (props) => {
   }
 
   return (
-    <>
+    <div className='form-container'>
       <h2 className='form-header'>Add a New Project</h2>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -82,10 +85,33 @@ const AddProjectForm = (props) => {
           onChange={handleDeadlineDate}
           type='date'
         />
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
-        <button type='submit'>Add Project</button>
+        <InputField
+          label="By completing this project, wouldn't it be great if..."
+          htmlFor='project-beGreatIf'
+          value={newBeGreatIf}
+          onChange={handleBeGreatIf}
+        />
+
+        <Button
+          className='detail-btn'
+          color='primary'
+          variant='contained'
+          onClick={() => setModalIsOpen(false)}
+        >
+          Close
+        </Button>
+
+        <Button
+          type='submit'
+          className='detail-btn'
+          color='success'
+          variant='contained'
+          
+        >
+          Add Project
+        </Button>
       </form>
-    </>
+    </div>
   );
 };
 

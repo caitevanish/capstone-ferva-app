@@ -58,6 +58,14 @@ button:hover {
   text-align: center;
 }
 
+.form-container {
+  margin: 0 auto;
+  margin-top: 5;
+  max-width: 400px;
+  overflow: auto;
+  text-align: left;
+}
+
 .container-pages {
   margin-left: 15rem;
   margin-top: 5;
