@@ -34,15 +34,14 @@ const GoalsTable = (props) => {
 
   return (
     <>
-      <h2>My Goals</h2>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell>Title</TableCell>
-              <TableCell align='right'>Description</TableCell>
-              <TableCell align='right'>Start Date</TableCell>
-              <TableCell align='right'>Deadline</TableCell>
+              <TableCell align='left'>Description</TableCell>
+              <TableCell align='left'>Start Date</TableCell>
+              <TableCell align='left'>Deadline</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -55,11 +54,12 @@ const GoalsTable = (props) => {
                   <TableCell component='th' scope='row'>
                     {goal.title}
                   </TableCell>
-                  <TableCell align='right'>{goal.description}</TableCell>
-                  <TableCell align='right'>{goal.start_date}</TableCell>
-                  <TableCell align='right'>{goal.deadline_date}</TableCell>
+                  <TableCell align='left'>{goal.description}</TableCell>
+                  <TableCell align='left'>{goal.start_date}</TableCell>
+                  <TableCell align='left'>{goal.deadline_date}</TableCell>
                   <TableCell align='right'>
                     <Button
+                      color='secondary'
                       onClick={() => {
                         navigate(`/goal/${goal.id}/`);
                       }}

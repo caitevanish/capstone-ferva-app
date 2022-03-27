@@ -76,9 +76,10 @@ const CourseDetailPage = (props) => {
               <h4>Course:</h4>
               <p>{courseDetails.title}</p>
             </div>
-            <div className='row'></div>
-            <h4>Company:</h4>
-            <p>{courseDetails.company}</p>
+            <div className='row'>
+              <h4>Company:</h4>
+              <p>{courseDetails.company}</p>
+            </div>
             <div className='row'>
               <h4>Purchase Date:</h4>
             </div>

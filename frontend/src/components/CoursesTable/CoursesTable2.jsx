@@ -30,9 +30,9 @@ const CoursesTable = (props) => {
           <TableHead>
             <TableRow>
               <TableCell>Title</TableCell>
-              <TableCell align='right'>Company</TableCell>
-              <TableCell align='right'>Purchase Date</TableCell>
-              <TableCell align='right'>Price</TableCell>
+              <TableCell align='left'>Company</TableCell>
+              <TableCell align='left'>Purchase Date</TableCell>
+              <TableCell align='left'>Price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -45,10 +45,10 @@ const CoursesTable = (props) => {
                   <TableCell component='th' scope='row'>
                     {course.title}
                   </TableCell>
-                  <TableCell align='right'>{course.company}</TableCell>
-                  <TableCell align='right'>{course.purchase_date}</TableCell>
-                  <TableCell align='right'>{course.price}</TableCell>
-                  <TableCell align='right'>
+                  <TableCell align='left'>{course.company}</TableCell>
+                  <TableCell align='left'>{course.purchase_date}</TableCell>
+                  <TableCell align='left'>{course.price}</TableCell>
+                  <TableCell align='left'>
                     <Button
                       color='secondary'
                       onClick={() => {

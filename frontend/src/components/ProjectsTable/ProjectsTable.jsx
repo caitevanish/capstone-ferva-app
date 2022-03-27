@@ -20,9 +20,9 @@ const ProjectsTable = ({ projects }) => {
           <TableHead>
             <TableRow>
               <TableCell>Title</TableCell>
-              <TableCell align='right'>Description</TableCell>
-              <TableCell align='right'>Start Date</TableCell>
-              <TableCell align='right'>Deadline</TableCell>
+              <TableCell align='left'>Description</TableCell>
+              <TableCell align='left'>Start Date</TableCell>
+              <TableCell align='left'>Deadline</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -35,11 +35,12 @@ const ProjectsTable = ({ projects }) => {
                   <TableCell component='th' scope='row'>
                     {project.title}
                   </TableCell>
-                  <TableCell align='right'>{project.description}</TableCell>
-                  <TableCell align='right'>{project.start_date}</TableCell>
-                  <TableCell align='right'>{project.deadline_date}</TableCell>
+                  <TableCell align='left'>{project.description}</TableCell>
+                  <TableCell align='left'>{project.start_date}</TableCell>
+                  <TableCell align='left'>{project.deadline_date}</TableCell>
                   <TableCell align='right'>
                     <Button
+                      color='secondary'
                       onClick={() => {
                         navigate(`/project/${project.id}/`);
                       }}

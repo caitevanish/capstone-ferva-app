@@ -55,11 +55,10 @@ const CoursesMainPage = (props) => {
         </div>
         <div className='col-md-5'>
           <h2>Online Investments Chart</h2>
-          <div className='feature-6'>{/* <BarChart2 /> */}</div>
+          <div className='feature-6a'>{/* <BarChart2 /> */}</div>
         </div>
       </div>
 
-      <div></div>
       <Modal isOpen={modalIsOpen}>
         <AddCourseForm
           user={user}
