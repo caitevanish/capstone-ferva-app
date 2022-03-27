@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 // import CoursesTable from '../../components/CoursesTable/CoursesTable';
-import CoursesTable2 from '../../components/CoursesTable/CoursesTable2';
+import CoursesTable from '../../components/CoursesTable/CoursesTable';
 import Modal from 'react-modal';
-// import BarChart from '../../components/Chart/BarChart2';
+import BarChart from '../../components/Chart/BarChart';
 
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
@@ -50,12 +50,14 @@ const CoursesMainPage = (props) => {
               Add a Course
             </Button>
 
-            <CoursesTable2 courses={courses} token={token} />
+            <CoursesTable courses={courses} token={token} />
           </div>
         </div>
-        <div className='col-md-5'>
-          <h2>Online Investments Chart</h2>
-          <div className='feature-6a'>{/* <BarChart2 /> */}</div>
+        <div className='col-md-4'>
+          <h2>Online Investments</h2>
+          <div className='feature-6a'>
+            <BarChart />
+          </div>
         </div>
       </div>
 

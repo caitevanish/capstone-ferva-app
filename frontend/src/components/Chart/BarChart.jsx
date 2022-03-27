@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { Chart as ChartJS, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { UserData } from './Data'; //this is from youtube example
+// import { UserData } from './Data'; //this is from youtube example
 
 ChartJS.register(BarElement);
 
 //pass the data through chart component
-const BarChart = ({ chartData }) => {
+const BarChart = ({ courses }) => {
   // const [userData, setUserData] = useState({
-  //   labels: UserData.map((data) => data.year),
-  //   datasets: [{
-  //     label: "Users Gained",
-  //     data: UserData.map((data) => data.userGain),
-
-  //   }]
+  //   labels: {data.labels},
+  //   datasets: [
+  //     {
+  //       label: 'Users Gained',
+  //       data: UserData.map((data) => data.userGain),
+  //     },
+  //   ],
   // });
 
   // function yearlyTotals(request):
@@ -37,12 +38,12 @@ const BarChart = ({ chartData }) => {
   //   const fetchData();
   // }, []);
 
-  const data = {
+  const chartData = {
     labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'], //different years from the courses table
     datasets: [
       {
         label: 'Yearly Investment',
-        data: [600, 90, 200, 200, 1000, 1200, 200, 8000],
+        data: [600, 90, 200, 800, 3000, 1200, 8000, 0],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -80,7 +81,7 @@ const BarChart = ({ chartData }) => {
 
   return (
     <div>
-      <Bar data={chartData} height={400} options={options} />
+      <Bar data={chartData} width={300} height={400} options={options} />
     </div>
   );
 };

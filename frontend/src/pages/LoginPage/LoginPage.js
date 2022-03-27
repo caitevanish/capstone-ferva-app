@@ -3,7 +3,6 @@ import AuthContext from '../../context/AuthContext';
 import useCustomForm from '../../hooks/useCustomForm';
 // import { Link } from 'react-router-dom';
 import '../../App.css';
-import './LoginPage.css';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
