@@ -85,8 +85,7 @@ const CourseDetailPage = (props) => {
               <h4>Purchase Date:</h4>
             </div>
             <p>{courseDetails.purchase_date}</p>
-            <h4>I want to finish this course by:</h4>
-            <p>{courseDetails.deadline_date}</p>
+
             <h4>Price:</h4>
             <p>{courseDetails.price}</p>
           </div>

@@ -17,7 +17,7 @@ const UpdateCourseForm = (props) => {
   // const [editPurchaseType, setPurchaseType] = useState(
   //   courseDetails.purchase_type);
   const [editBeGreatIf, setBeGreatIf] = useState(courseDetails.be_great);
-  const [editHelpMeTo, setHelpMeTo] = useState(courseDetails.be_great);
+  const [editHelpMeTo, setHelpMeTo] = useState(courseDetails.help_me_to);
 
   const handleTitle = (event) => setTitle(event.target.value);
   const handleCompany = (event) => setCompany(event.target.value);
