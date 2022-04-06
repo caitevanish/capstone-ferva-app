@@ -43,7 +43,7 @@ const BarChart = ({ courses }) => {
     datasets: [
       {
         label: 'Yearly Investment',
-        data: [600, 90, 200, 800, 3000, 1200, 8000, 0],
+        data: [0, 600, 0, 800, 600, 1200, 3000, 0],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

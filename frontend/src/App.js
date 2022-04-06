@@ -120,7 +120,7 @@ function App() {
           path='/'
           element={
             <PrivateRoute>
-              <HomePage user={user} token={token} courses={courses} />
+              <HomePage user={user} token={token} courses={courses} goals={goals} />
             </PrivateRoute>
           }
         />

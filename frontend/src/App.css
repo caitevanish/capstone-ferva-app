@@ -9,7 +9,7 @@
 }
 
 h1 {
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 2.5rem;
   text-align: center;
 }
@@ -21,7 +21,12 @@ h2 {
 }
 
 h3 {
-  padding: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+h4,
+h5 {
   text-align: center;
 }
 
@@ -97,8 +102,14 @@ button:hover {
 }
 
 .feature-1 {
+  margin-left: 15rem;
   text-align: center;
 }
+
+.feature-2 {
+  text-align: center;
+}
+
 .feature-5 {
   text-align: left;
   padding: 2rem;
@@ -138,4 +149,3 @@ button:hover {
 .detail-btn {
   margin-left: 1rem;
 }
-

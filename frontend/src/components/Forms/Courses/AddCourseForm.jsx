@@ -43,8 +43,6 @@ const AddCourseForm = ({ setModalIsOpen, rqstRld }) => {
 
   async function addCourse(course) {
     try {
-      // console.log('course test', course);
-      // console.log('token test', token);
       let result = await axios.post(
         `http://127.0.0.1:8000/api/courses/add/`,
         course,

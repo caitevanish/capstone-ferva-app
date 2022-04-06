@@ -22,7 +22,7 @@ const SideNavbar = () => {
   // });
   // const classes = useStyles();
   return (
-    <aside>
+    <aside className='col-md-2'>
       <div className='sideNavbar'>
         {user && (
           <Stack

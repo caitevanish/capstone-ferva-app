@@ -7,6 +7,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import './StudyTracker.css';
 
 export default function StudyTracker(props) {
   // const [studyMonday, setStudyMonday] = useState(buttonOff);
@@ -25,7 +26,7 @@ export default function StudyTracker(props) {
   return (
     <div className='feature-1'>
       <FormControl component='fieldset'>
-        <h2>This Week's Studying:</h2>
+        <h3>This Week's Studying:</h3>
         <FormLabel component='legend' />
         <FormGroup aria-label='position' row>
           {/* <FormControlLabel
