@@ -1,17 +1,27 @@
-import React from 'react';
-import StudyTracker from '../../components/StudyTracker/StudyTracker';
-import DeadlineTable from '../../components/DeadlineTable/DeadlineTable';
+import React, { useEffect, useState } from 'react';
 import AddNewButtons from '../../components/AddNewButtons/AddNewButtons';
-// import { useEffect, useState } from 'react';
-// import { Routes, Route } from 'react-router-dom';
-
-// import PrivateRoute from '../../utils/PrivateRoute';
-// import axios from 'axios';
-// import useAuth from '../../hooks/useAuth';
+import { Paper } from '@mui/material';
+import { width } from '@mui/system';
 
 const HomePage = ({ user, token, goals }) => {
-  console.log(user);
-  // const [user, token] = useAuth();
+  const [currentGoal, setCurrentGoal] = useState({});
+  // const [topCourses, setTopCourses] = useState([]);
+
+  useEffect(() => {
+    setHomeGoal(goals);
+    console.log('current goal:', currentGoal);
+  }, [goals]);
+
+  async function setHomeGoal(goals) {
+    let goal = goals[0];
+    // let goalTitle = goal.title;
+    // let goalDescription = goal.description;
+    console.log('Current Goal title: ', goal.title);
+    console.log('Current Goal description: ', goal.description);
+
+    setCurrentGoal(goal);
+    return;
+  }
 
   return (
     <div className='container-fluid'>
@@ -20,26 +30,30 @@ const HomePage = ({ user, token, goals }) => {
         <div className='feature-2'>
           <AddNewButtons />
         </div>
-        {/* <div className='col-md-6'>
-          <StudyTracker />
-        </div> */}
       </div>
       <div className='row'>
-        <div className='col-md-4'>
-          <div className='feature-1'>
+        <div className='row'>
+          <div className=''>
             <h3>Current Goal:</h3>
-            
-            {/* Add Current Goal from app.js here  */}
+            <Paper>
+              <h3>{currentGoal.title}</h3>
+              <p>{currentGoal.description}</p>
+            </Paper>
           </div>
         </div>
+        <div className='col-md-4'></div>
 
         <div className='col-md-3'>
           <h3>Top 3 Courses</h3>
-          {/* Add 3 courses from app.js here  */}
+          <Paper>
+            <p>Courses</p>
+          </Paper>
         </div>
         <div className='col-md-3'>
           <h3>Top 3 Projects</h3>
-          {/* Add 3 projects from app.js here  */}
+          <Paper>
+            <p>Projects</p>
+          </Paper>
         </div>
       </div>
     </div>
