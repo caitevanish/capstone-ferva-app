@@ -1,9 +1,9 @@
-import "./Footer.css";
+import './Footer.css';
 
 const Footer = () => {
   return (
     <footer>
-      <p>Copyright © 2022</p>{" "}
+      <p>OCE, llc © 2022</p>{' '}
     </footer>
   );
 };

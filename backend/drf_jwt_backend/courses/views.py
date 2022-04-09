@@ -6,7 +6,14 @@ from rest_framework.decorators import api_view, permission_classes
 from .models import Course
 from .serializers import CourseSerializer
 
+from django.apps import apps
+
 # Create your views here.
+
+
+def get_years(request, pk):
+  courses = Course.objects.get(pk=pk)
+  years_list = courses.filter(year=courses.course.purchase_date)
 
 
 #<<<<<<<<< GET / Retrieve >>>>>>>>>>
@@ -17,8 +24,8 @@ from .serializers import CourseSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_all_courses(request):
-  # courses = Course.objects.filter(user_id=request.user.id)
-  courses = Course.objects.all()
+  courses = Course.objects.filter(user_id=request.user.id)
+  #courses = Course.objects.filter(user__id = pk)
   serializer = CourseSerializer(courses, many=True)
   return Response(serializer.data)
 
@@ -48,7 +55,7 @@ def view_top_courses(request):
 def add_course(request):
   serializer = CourseSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save()   #Does something go in the argument?
+    serializer.save(user = request.user)   #Does something go in the argument?
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -80,6 +87,20 @@ def delete_course(request, pk):
   course.delete()
   return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+#<<<<<<<<< Fetch Chart Data >>>>>>>>>>
+#         
+
+# @api_view([''])
+# @permission_classes([IsAuthenticated])
+# def yearly_courses(request, user_id):
+#   yearlyTotal = apps.get_model('courses.Course')
+
+#1. Get the year from the Purchase date column (x column label)
+#2. Add all of the prices together
+#3. Make the year with the highest amount be the max on the y-axis
+#4. Have the y-axis units be by 1000 dollars
+#5. 
 
 
 # <<<<<<<<<<<<<<<<< Notes <<<<<<<<<<<<<<<<<

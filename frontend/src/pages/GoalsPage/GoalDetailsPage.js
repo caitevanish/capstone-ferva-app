@@ -4,6 +4,8 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import UpdateGoalForm from '../../components/Forms/Goals/UpdateGoalForm';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+import { Stack } from '@mui/material';
 
 const GoalDetailPage = (props) => {
   const [, token] = useAuth();
@@ -60,49 +62,92 @@ const GoalDetailPage = (props) => {
     setDetailReload(!detailReload);
   };
   return (
-    <>
-      <Link to={'/goals/'} className='button'>
+    <div className='container-fluid'>
+      {/* <Link to={'/goals/'} className='button'>
         Back to Goals
-      </Link>
+      </Link> */}
+      <div className='row'>
+        <h1>Details for {goalDetails.title} Goal</h1>
+      </div>
+      <div className='row'>
+        <div className='col-md-6'>
+          <div className='details-left'>
+            <div className='row'>
+              <h4>Goal Name</h4>
+              <p>{goalDetails.title}</p>
+            </div>
+            <div className='row'>
+              <h4>Description</h4>
+              <p>{goalDetails.description}</p>
+            </div>
+            <div className='row'>
+              <h4>Start Date:</h4>
+              <p>{goalDetails.start_date}</p>
+              <h4>Deadline:</h4>
+              <p>{goalDetails.deadline_date}</p>
+            </div>
+            <div className='row'>
+              <h4>By completing this course, wouldn't it be great if...</h4>
+              <p>{goalDetails.notes}</p>
+              <div className='details-buttons'>
+                <Stack direction='row' spacing={2} justifyContent='right'>
+                  <Button
+                    className='detail-btn'
+                    color='warning'
+                    variant='outlined'
+                    onClick={(event) => handleDelete(event, goalDetails.id)}
+                  >
+                    Delete
+                  </Button>
 
-      <h1>Details for {goalDetails.title} Goal</h1>
+                  <Button
+                    className='detail-btn'
+                    color='success'
+                    variant='contained'
+                    onClick={() => setModalIsOpen(true)}
+                  >
+                    Update
+                  </Button>
+                </Stack>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div className='row'>
-        <h3>Goal Name</h3>
-        <p>{goalDetails.title}</p>
+        <Modal isOpen={modalIsOpen}>
+          <UpdateGoalForm
+            setModalIsOpen={setModalIsOpen}
+            id={id}
+            goalDetails={goalDetails}
+            dtlRld={dtlRld}
+            rqstRld={rqstRld}
+          />
+        </Modal>
       </div>
-      <div className='row'>
-        <h3>Description</h3>
-        <p>{goalDetails.description}</p>
-      </div>
-      <div className='row'>
-        <h3>Start Date:</h3>
-        <p>{goalDetails.start_date}</p>
-        <h3>Deadline:</h3>
-        <p>{goalDetails.deadline_date}</p>
-      </div>
-      <div className='col-1'>
-        <h3>By completing this course, wouldn't it be great if...</h3>
-        <p>{}</p> {/* Add great_if to model and migrate */}
-      </div>
-      <button onClick={() => setModalIsOpen(true)}>Update</button>
-      <Modal isOpen={modalIsOpen}>
-        <UpdateGoalForm
-          setModalIsOpen={setModalIsOpen}
-          id={id}
-          goalDetails={goalDetails}
-          dtlRld={dtlRld}
-          rqstRld={rqstRld}
-        />
-      </Modal>
-      <button
-        onClick={(event) => handleDelete(event, goalDetails.id)}
-        className='btn-danger'
-      >
-        Delete
-      </button>
-    </>
+    </div>
   );
 };
 
 export default GoalDetailPage;
+
+{
+  /* <div className='col-md-4'>
+          <div className='details-right'>
+            <div className='row'>
+              <h4>Milestones:</h4>
+              <p></p>
+            </div>
+
+            <div className='row'>
+              <h4>Projects List</h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='row'>
+        <h3>VISIONBOARD!</h3>
+      
+      </div> */
+}

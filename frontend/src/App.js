@@ -25,6 +25,8 @@ import SideNavbar from './components/SideNavbar/SideNavbar';
 // Util Imports
 import PrivateRoute from './utils/PrivateRoute';
 import ReactModal from 'react-modal';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './themes/theme';
 
 ReactModal.setAppElement('#root');
 function App() {
@@ -42,6 +44,7 @@ function App() {
           Authorization: 'Bearer ' + token,
         },
       });
+      console.log('User: ', user);
       setCourses(response.data);
     } catch (error) {
       console.log(error.message);
@@ -69,7 +72,7 @@ function App() {
         },
       });
       setGoals(response.data);
-      console.log("Goal data: ", response.data)
+      console.log('Goal data: ', response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -86,8 +89,28 @@ function App() {
     setRequestReload(!requestReload);
   };
 
+  //   async function fetchData() {
+  //     //setting up empty arrays to catch the response
+  //    try {
+  //      let response = await axios.get(`http://127.0.0.1:8000/api/courses/${user.user_id}` , {
+  //        headers: {
+  //          Authorization: 'Bearer ' + token,
+  //        },
+  //      });
+  //      year = response.data.date; //need to parse the year from the date
+  //      investments = response.data.date;
+
+  //      let setTotalCost(response.data.price);
+  //      setTotal(response.data.price);
+  //    } catch (error) {
+  //      console.log(error.message);
+  //    }
+  //  }
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       <TopNavbar />
       <SideNavbar />
       <Routes>
@@ -97,7 +120,7 @@ function App() {
           path='/'
           element={
             <PrivateRoute>
-              <HomePage user={user} token={token} courses={courses} />
+              <HomePage user={user} token={token} courses={courses} goals={goals} />
             </PrivateRoute>
           }
         />
@@ -105,7 +128,11 @@ function App() {
           path='/courses/'
           element={
             <PrivateRoute>
-              <CoursesMainPage courses={courses} rqstRld={rqstRld} />
+              <CoursesMainPage
+                user={user}
+                courses={courses}
+                rqstRld={rqstRld}
+              />
             </PrivateRoute>
           }
         />
@@ -151,7 +178,7 @@ function App() {
         />
       </Routes>
       <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
 

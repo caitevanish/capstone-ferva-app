@@ -8,6 +8,28 @@
   box-sizing: inherit;
 }
 
+h1 {
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+h3 {
+  padding: 1rem;
+  text-align: center;
+}
+
+h4,
+h5 {
+  text-align: left;
+}
+
 html {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -18,7 +40,7 @@ p {
 }
 
 button {
-  /* background-color: transparent; */
+  background-color: #6aa9bc;
   border: 2px solid steelblue;
   color: #9b8a90;
   font-size: 1rem;
@@ -29,15 +51,33 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: steelblue;
+  /* color: #6aa9bc; */
+  /* background-color: #6aa9bc; */
 }
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  margin-top: 5;
+  max-width: 700px;
   overflow: auto;
   text-align: center;
+}
+
+.form-container {
+  margin: 0 auto;
+  margin-top: 5;
+  max-width: 400px;
+  overflow: auto;
+  text-align: left;
+}
+
+.container-pages {
+  margin-left: 15rem;
+  margin-right: 15rem;
+  margin-top: 5;
+  max-width: 400px;
+  overflow: auto;
+  /* text-align: center; */
 }
 
 .form {
@@ -55,4 +95,57 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.site-container {
+  height: 100%;
+}
+
+.feature-1 {
+  margin-left: 15rem;
+  text-align: center;
+}
+
+.feature-2 {
+  text-align: center;
+}
+
+.feature-5 {
+  text-align: left;
+  padding: 2rem;
+  margin-left: 15rem;
+  margin-bottom: 5rem;
+}
+
+.feature-6 {
+  text-align: left;
+  padding-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.dash-left {
+  padding: 2rem;
+  padding-left: 4rem;
+}
+.dash-right {
+  padding: 2rem;
+}
+.border {
+  background: red;
+}
+
+.details-left {
+  text-align: left;
+  padding: 2rem;
+  margin-left: 15rem;
+}
+.details-right {
+  text-align: left;
+  padding: 2rem;
+}
+.details-buttons {
+  text-align: center;
+}
+.detail-btn {
+  margin-left: 1rem;
 }

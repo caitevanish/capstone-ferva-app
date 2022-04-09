@@ -1,40 +1,72 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+// import CoursesTable from '../../components/CoursesTable/CoursesTable';
 import CoursesTable from '../../components/CoursesTable/CoursesTable';
 import Modal from 'react-modal';
+import BarChart from '../../components/Chart/BarChart';
 
 import useAuth from '../../hooks/useAuth';
 import AddCourseForm from '../../components/Forms/Courses/AddCourseForm';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const CoursesMainPage = (props) => {
-  const { courses, rqstRld } = props;
-  const [user, token] = useAuth();
+  const { user, courses, rqstRld } = props;
+  const [, token] = useAuth();
   // const [courses, setCourses] = useState([]);
   // const [courseDetails, setCourseDetails] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  //-----------To-Do:
-  //BUG FIX: As of now, when I switch to the course amin page i need to reload the screen to see the table filled with details. No good! Tried using the useEffect which calls setCourses, didn't work.
+  function getDatesList(courses) {
+    let datesList = [];
+    let dateData = courses.map((course) => course.purchase_date);
+    console.log(dateData);
+    return;
+  }
 
   // useEffect(() => {
-  //   // fetchCourses();
-  // }, []);
+  //   fetchChart();
+  // }, [courses]);
 
   //-----------To-Do:
 
   return (
-    <div className='container'>
-      <h1>Courses Main Page for {user.username}</h1>
-      <button onClick={() => setModalIsOpen(true)}>Add a Course</button>
-      <Modal isOpen={modalIsOpen}>
-        <AddCourseForm setModalIsOpen={setModalIsOpen} rqstRld={rqstRld} />
-      </Modal>
+    <div className='container-fluid'>
+      <div className='row'>
+        <h1>Courses Main Page</h1>
+      </div>
+      <div className='row'>
+        <div className='col-md-7'>
+          {/* <h2>My Courses</h2> */}
+          <div className='feature-5'>
+         
+            <Button
+              color='secondary'
+              variant='contained'
+              onClick={() => setModalIsOpen(true)}
+            >
+              Add a Course
+            </Button>
 
-      <CoursesTable
-        courses={courses}
-        // setCourseDetails={setCourseDetails}
-        token={token}
-      />
+            <CoursesTable courses={courses} token={token} />
+          </div>
+        </div>
+        <div className='col-md-4'>
+          <h2>Online Investments</h2>
+          <div className='feature-6a'>
+            <BarChart />
+          </div>
+        </div>
+      </div>
+
+      <Modal isOpen={modalIsOpen}>
+        <AddCourseForm
+          user={user}
+          setModalIsOpen={setModalIsOpen}
+          rqstRld={rqstRld}
+        />
+      </Modal>
+      {/* <BarChart courses={courses} getDatesList={getDatesList} /> */}
     </div>
   );
 };

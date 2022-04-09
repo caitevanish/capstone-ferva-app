@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,5 +25,8 @@ urlpatterns = [
     path('api/cars/', include('cars.urls')), #just example
     path('api/courses/', include('courses.urls')),
     path('api/projects/', include('projects.urls')),
-    path('api/goals/', include('goals.urls')),   
+    path('api/goals/', include('goals.urls')), 
+    path('api/visionboard/', include('visionboard.urls')),  
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

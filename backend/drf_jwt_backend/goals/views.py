@@ -16,8 +16,8 @@ from .serializers import GoalSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def view_all_goals(request):
-  # goals = Goal.objects.filter(user_id=request.user.id)
-  goals = Goal.objects.all()
+  goals = Goal.objects.filter(user_id=request.user.id)
+  # goals = Goal.objects.all()
   serializer = GoalSerializer(goals, many=True)
   return Response(serializer.data)
 
@@ -46,7 +46,7 @@ def view_top_goals(request):
 def add_goal(request):
   serializer = GoalSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save()   #Does something go in the argument?
+    serializer.save(user = request.user)   #Does something go in the argument?
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

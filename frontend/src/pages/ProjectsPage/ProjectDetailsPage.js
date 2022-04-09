@@ -4,8 +4,11 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import UpdateProjectForm from '../../components/Forms/Projects/UpdateProjectForm';
 import axios from 'axios';
+import VisionBoard2 from '../../components/VisionBoard/VisionBoard';
+import Button from '@mui/material/Button';
+import { Stack } from '@mui/material';
 
-const ProjectDetailPage = (props) => {
+const ProjectDetailsPage = (props) => {
   const [, token] = useAuth();
   const { rqstRld } = props;
   const { id } = useParams();
@@ -61,50 +64,89 @@ const ProjectDetailPage = (props) => {
   };
 
   return (
-    <>
-      <Link to={'/projects/'} className='button'>
+    <div className='container-fluid'>
+      {/* <Link to={'/projects/'} className='button'>
         Back to Projects
-      </Link>
-
-      <h1>Details for {projectDetails.title} Project</h1>
-
+      </Link> */}
       <div className='row'>
-        <h3>Project Name</h3>
-        <p>{projectDetails.title}</p>
+        <h1>Details for {projectDetails.title} Project</h1>
       </div>
       <div className='row'>
-        <h3>Description</h3>
-        <p>{projectDetails.description}</p>
-      </div>
-      <div className='row'>
-        <h3>Start Date:</h3>
-        <p>{projectDetails.start_date}</p>
-        <h3>Deadline:</h3>
-        <p>{projectDetails.deadline_date}</p>
-      </div>
-      <div className='col-1'>
-        <h3>By completing this course, wouldn't it be great if...</h3>
-        <p>{}</p> {/* Add great_if to model and migrate */}
-      </div>
+        <div className='col-md-6'>
+          <div className='details-left'>
+            <div className='row'>
+              <h4>Project:</h4>
+              <p>{projectDetails.title}</p>
+            </div>
+            <div className='row'>
+              <h4>Description</h4>
+              <p>{projectDetails.description}</p>
+            </div>
+            <div className='row'>
+              <h4>Start Date:</h4>
+              <p>{projectDetails.start_date}</p>
+              <h4>Deadline:</h4>
+              <p>{projectDetails.deadline_date}</p>
+            </div>
+            <div className='row'>
+              <h4>By completing this project, wouldn't it be great if...</h4>
+              <p>{projectDetails.notes}</p>
+              <div className='details-buttons'>
+                <Stack direction='row' spacing={2} justifyContent='right'>
+                  <Button
+                    className='detail-btn'
+                    color='warning'
+                    variant='outlined'
+                    onClick={(event) => handleDelete(event, projectDetails.id)}
+                  >
+                    Delete
+                  </Button>
 
-      <button onClick={() => setModalIsOpen(true)}>Update</button>
-      <Modal isOpen={modalIsOpen}>
-        <UpdateProjectForm
-          setModalIsOpen={setModalIsOpen}
-          id={id}
-          projectDetails={projectDetails}
-          dtlRld={dtlRld}
-          rqstRld={rqstRld}
-        />
-      </Modal>
-      <button
-        onClick={(event) => handleDelete(event, projectDetails.id)}
-        className='btn-danger'
-      >
-        Delete
-      </button>
-    </>
+                  <Button
+                    className='Z'
+                    color='success'
+                    variant='contained'
+                    onClick={() => setModalIsOpen(true)}
+                  >
+                    Update
+                  </Button>
+                </Stack>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className='col-md-4'>
+          <div className='details-right'>
+            <div className='row'>
+              <h4>Milestones:</h4>
+              <p>Milestones</p>
+            </div>
+
+            <div className='row'>
+              <h4>Project Timetable</h4>
+              <p>TimeTable</p>
+            </div>
+          </div>
+        </div>
+
+        <div className='row'>
+          <h3>VISIONBOARD!</h3>
+          <p>VisionBoard2</p>
+        </div> */}
+
+        <Modal isOpen={modalIsOpen}>
+          <UpdateProjectForm
+            setModalIsOpen={setModalIsOpen}
+            id={id}
+            projectDetails={projectDetails}
+            dtlRld={dtlRld}
+            rqstRld={rqstRld}
+          />
+        </Modal>
+      </div>
+    </div>
   );
 };
 
-export default ProjectDetailPage;
+export default ProjectDetailsPage;
