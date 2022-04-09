@@ -5,34 +5,41 @@ import { width } from '@mui/system';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const HomePage = ({ user, token, goals, courses }) => {
+const HomePage = ({ user, token, goals, courses, projects }) => {
   const [currentGoal, setCurrentGoal] = useState({});
   const [topCourses, setTopCourses] = useState([]);
+  const [topProjects, setTopProjects] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     setHomeGoal(goals);
     setHomeCourses(courses);
-    console.log('current goal:', currentGoal);
+    console.log(topCourses);
+    setHomeProjects(projects);
   }, [goals, courses]);
 
   async function setHomeGoal(goals) {
     let goal = goals[0];
-    // let goalTitle = goal.title;
-    // let goalDescription = goal.description;
-    console.log('Current Goal title: ', goal.title);
-    console.log('Current Goal description: ', goal.description);
-
+    // console.log('Current Goal title: ', goal.title);
+    // console.log('Current Goal description: ', goal.description);
     setCurrentGoal(goal);
     return;
   }
 
   async function setHomeCourses(courses) {
     //create empty list to hold 3 courses
+    console.log(courses);
     let threeCourses = courses.slice(0, 3);
     //iterate over the first 3 courses, add them to topCourses list
     console.log('Top three courses', threeCourses);
     setTopCourses(threeCourses);
+    return;
+  }
+
+  async function setHomeProjects(projects) {
+    let threeProjects = projects.slice(0, 3);
+    console.log('Top 3 projects', threeProjects);
+    setTopProjects(threeProjects);
     return;
   }
 
@@ -64,7 +71,7 @@ const HomePage = ({ user, token, goals, courses }) => {
                 return (
                   <li key={course.id}>
                     <ul>
-                      {course.title}{' '}
+                      {course.title}
                       <Button
                         color='secondary'
                         onClick={() => {
@@ -77,13 +84,30 @@ const HomePage = ({ user, token, goals, courses }) => {
                   </li>
                 );
               })}
-            // <li>Courses</li>
           </Paper>
         </div>
         <div className='col-md-4'>
           <h3>Top 3 Projects</h3>
           <Paper>
-            <p>Projects</p>
+            {topProjects &&
+              topProjects.length > 0 &&
+              topProjects.map((project) => {
+                return (
+                  <li key={project.id}>
+                    <ul>
+                      {project.title}
+                      <Button
+                        color='secondary'
+                        onClick={() => {
+                          navigate(`/project/${project.id}/`);
+                        }}
+                      >
+                        Details
+                      </Button>
+                    </ul>
+                  </li>
+                );
+              })}
           </Paper>
         </div>
       </div>
