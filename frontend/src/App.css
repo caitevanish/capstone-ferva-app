@@ -1,33 +1,26 @@
+/*
+Theme Name: FERVA Standard Theme
+Theme URI: 
+Description: The standard Genesis child theme on which all __ sites are built.
+Author: Caitlin Evanishyn-Troup
+Author URI: 
+Version: 1.0
+Template: genesis
+*/
+
+/* ## Imports
+--------------------------------------------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
+/* ## Baseline Normalize
+--------------------------------------------- */
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-}
-
-h1 {
-  padding-top: 3rem;
-  padding-bottom: 2.5rem;
-  text-align: center;
-}
-
-h2 {
-  padding-top: 1rem;
-  padding: 2rem;
-  text-align: center;
-}
-
-h3 {
-  padding: 1rem;
-  text-align: center;
-}
-
-h4,
-h5 {
-  text-align: left;
 }
 
 html {
@@ -55,6 +48,66 @@ button:hover {
   /* background-color: #6aa9bc; */
 }
 
+/* # Defaults
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Typographical Elements
+--------------------------------------------- */
+
+/* ## Headings
+--------------------------------------------- */
+h1 {
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+h3 {
+  padding: 1rem;
+  text-align: center;
+}
+
+
+h4,
+h5 {
+  text-align: left;
+}
+
+/* ## Forms
+--------------------------------------------- */
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.form input {
+  display: block;
+  width: 100%;
+  height: 25px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+/* # Structure and Layout
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Site Containers
+--------------------------------------------- */
+
+.site-container {
+  height: 100%;
+}
+
 .container {
   margin: 0 auto;
   margin-top: 5;
@@ -80,26 +133,14 @@ button:hover {
   /* text-align: center; */
 }
 
-.form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1rem;
-}
+/* ## 
+--------------------------------------------- */
 
-.form input {
-  display: block;
-  width: 100%;
-  height: 25px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
-}
+/* ## 
+--------------------------------------------- */
 
-.site-container {
-  height: 100%;
-}
+/* ## 
+--------------------------------------------- */
 
 .feature-1 {
   margin-left: 15rem;
@@ -149,3 +190,8 @@ button:hover {
 .detail-btn {
   margin-left: 1rem;
 }
+
+.dash-goal {
+  width: 100%;
+}
+

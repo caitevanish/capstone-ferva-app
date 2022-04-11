@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AddNewButtons from '../../components/AddNewButtons/AddNewButtons';
-import { Paper } from '@mui/material';
+import { Paper, Box, Typography } from '@mui/material';
 import { width } from '@mui/system';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { makeStyles } from '@mui/material';
 
 const HomePage = ({ user, token, goals, courses, projects }) => {
   const [currentGoal, setCurrentGoal] = useState({});
@@ -43,6 +44,17 @@ const HomePage = ({ user, token, goals, courses, projects }) => {
     return;
   }
 
+  // const useStyles = makeStyles({
+  //   paper: {
+  //     marginTop: '8',
+  //     display: 'flex',
+  //     flexDirection: 'column',
+  //     alignItems: 'center',
+  //   },
+  // });
+
+  // const classes = useStyles();
+
   return (
     <div className='container-fluid'>
       <h1>Welcome back, {user.first_name}!</h1>
@@ -52,63 +64,114 @@ const HomePage = ({ user, token, goals, courses, projects }) => {
         </div>
       </div>
       <div className='row'>
-        <div className='row'>
-          <div className=''>
-            <h3>Current Goal:</h3>
-            <Paper>
-              <h3>{currentGoal.title}</h3>
-              <p>{currentGoal.description}</p>
+        <h3>Current Goal:</h3>
+        <div style={{ marginLeft: '38%' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              width: 550,
+            }}
+          >
+            <Paper sx={{ alignItems: 'center' }}>
+              <Typography
+                sx={{ padding: '15px' }}
+                variant='h5'
+                color='secondary'
+                align='center'
+                gutterBottom
+              >
+                {currentGoal.title}
+              </Typography>
+              <Typography
+                sx={{ padding: '15px' }}
+                variant='body'
+                align='center'
+                gutterBottom
+              >
+                {currentGoal.description}
+              </Typography>
+              <p></p>
             </Paper>
+          </Box>
+        </div>
+      </div>
+
+      <div className='row'>
+        <div className='col-md-5'>
+          <div style={{ marginLeft: '60%', marginBottom: '20%' }}>
+            <h3 style={{ paddingLeft: '40%' }}>Top 3 Courses</h3>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'left',
+                width: 750,
+              }}
+            >
+              <Paper>
+                {topCourses &&
+                  topCourses.length > 0 &&
+                  topCourses.map((course) => {
+                    return (
+                      <li key={course.id}>
+                        <ul>
+                          {course.title}
+                          <Button
+                            color='tertiary'
+                            onClick={() => {
+                              navigate(`/course/${course.id}/`);
+                            }}
+                          >
+                            Details
+                          </Button>
+                        </ul>
+                      </li>
+                    );
+                  })}
+              </Paper>
+            </Box>
           </div>
         </div>
-
         <div className='col-md-4'>
-          <h3>Top 3 Courses</h3>
-          <Paper>
-            {topCourses &&
-              topCourses.length > 0 &&
-              topCourses.map((course) => {
-                return (
-                  <li key={course.id}>
-                    <ul>
-                      {course.title}
-                      <Button
-                        color='secondary'
-                        onClick={() => {
-                          navigate(`/course/${course.id}/`);
-                        }}
-                      >
-                        Details
-                      </Button>
-                    </ul>
-                  </li>
-                );
-              })}
-          </Paper>
-        </div>
-        <div className='col-md-4'>
-          <h3>Top 3 Projects</h3>
-          <Paper>
-            {topProjects &&
-              topProjects.length > 0 &&
-              topProjects.map((project) => {
-                return (
-                  <li key={project.id}>
-                    <ul>
-                      {project.title}
-                      <Button
-                        color='secondary'
-                        onClick={() => {
-                          navigate(`/project/${project.id}/`);
-                        }}
-                      >
-                        Details
-                      </Button>
-                    </ul>
-                  </li>
-                );
-              })}
-          </Paper>
+          <div style={{ marginLeft: '30%' }}>
+            <h3>
+              Top 3 <br></br>Projects
+            </h3>
+            <Box
+              fontWeight='fontWeightRegular'
+              m={1}
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                width: 750,
+              }}
+            >
+              <Paper>
+                {topProjects &&
+                  topProjects.length > 0 &&
+                  topProjects.map((project) => {
+                    return (
+                      <li key={project.id}>
+                        <ul>
+                          {project.title}
+                          <Button
+                            color='tertiary'
+                            onClick={() => {
+                              navigate(`/project/${project.id}/`);
+                            }}
+                          >
+                            Details
+                          </Button>
+                        </ul>
+                      </li>
+                    );
+                  })}
+              </Paper>
+            </Box>
+          </div>
         </div>
       </div>
     </div>
