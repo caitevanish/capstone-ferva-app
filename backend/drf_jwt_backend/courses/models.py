@@ -58,6 +58,10 @@ class StudyTimetable(models.Model):
   time_start = models.DateTimeField(auto_now_add=True)
   time_end = models.DateTimeField(auto_now=True)
 
+  class ArchiveCourse(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
+    archived_on = models.DateField(null=True, blank=True)
+
 
 #Junction Tables
 
